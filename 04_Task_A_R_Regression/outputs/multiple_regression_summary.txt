@@ -1,0 +1,57 @@
+=== MULTIPLE LINEAR REGRESSION SUMMARY ===
+Formula:  passenger_demand ~ airport_traffic + avg_income + fuel_price +      avg_ticket_fare + flight_frequency + route_distance 
+n = 200   p (predictors) = 6 
+
+
+Call:
+lm(formula = f_multi, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-135506  -30459    1322   31761  122302 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      -3.775e+04  4.729e+04  -0.798   0.4258    
+airport_traffic   4.759e-01  7.717e-02   6.167    4e-09 ***
+avg_income        8.052e-02  3.021e-01   0.267   0.7901    
+fuel_price        5.354e+04  2.400e+04   2.231   0.0268 *  
+avg_ticket_fare  -1.118e+02  8.855e+01  -1.262   0.2084    
+flight_frequency  2.212e+02  1.891e+02   1.170   0.2436    
+route_distance   -3.826e-01  8.632e+00  -0.044   0.9647    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 49550 on 193 degrees of freedom
+Multiple R-squared:  0.1789,	Adjusted R-squared:  0.1534 
+F-statistic: 7.008 on 6 and 193 DF,  p-value: 9.266e-07
+
+
+=== 95% CONFIDENCE INTERVALS ===
+                         2.5 %       97.5 %
+(Intercept)      -1.310194e+05 5.552932e+04
+airport_traffic   3.236780e-01 6.280933e-01
+avg_income       -5.152751e-01 6.763080e-01
+fuel_price        6.204044e+03 1.008716e+05
+avg_ticket_fare  -2.864100e+02 6.287348e+01
+flight_frequency -1.518144e+02 5.942447e+02
+route_distance   -1.740791e+01 1.664277e+01
+
+=== ANOVA ===
+Analysis of Variance Table
+
+Response: passenger_demand
+                  Df     Sum Sq    Mean Sq F value    Pr(>F)    
+airport_traffic    1 8.5734e+10 8.5734e+10 34.9128 1.535e-08 ***
+avg_income         1 9.6625e+07 9.6625e+07  0.0393   0.84297    
+fuel_price         1 1.1142e+10 1.1142e+10  4.5373   0.03443 *  
+avg_ticket_fare    1 2.9114e+09 2.9114e+09  1.1856   0.27758    
+flight_frequency   1 3.3695e+09 3.3695e+09  1.3721   0.24289    
+route_distance     1 4.8234e+06 4.8234e+06  0.0020   0.96470    
+Residuals        193 4.7394e+11 2.4557e+09                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+=== MODEL FIT ===
+R-squared: 0.1789  Adj R-sq: 0.1534  Sigma: 49554.65  F: 7.01 on 6 and 193 DF, p=9.27e-07
+AIC: 4900.78  BIC: 4927.17  LogLik: -2442.39

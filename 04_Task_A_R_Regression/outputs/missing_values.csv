@@ -1,0 +1,8 @@
+variable,n_missing,pct_missing
+airport_traffic,0,0
+avg_income,0,0
+fuel_price,0,0
+avg_ticket_fare,0,0
+flight_frequency,0,0
+route_distance,0,0
+passenger_demand,0,0

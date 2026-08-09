@@ -1,0 +1,8 @@
+variable,n,W,p_value,normal_at_05,interpretation
+airport_traffic,200,0.9955647082981759,0.828990340032727,TRUE,Fail to reject H0: approximately normal (p>0.05)
+avg_income,200,0.991011710495216,0.24984555262123065,TRUE,Fail to reject H0: approximately normal (p>0.05)
+fuel_price,200,0.9963795125122012,0.9217907848874441,TRUE,Fail to reject H0: approximately normal (p>0.05)
+avg_ticket_fare,200,0.9951899310528046,0.7774299895755632,TRUE,Fail to reject H0: approximately normal (p>0.05)
+flight_frequency,200,0.9939978168918613,0.6002933656834962,TRUE,Fail to reject H0: approximately normal (p>0.05)
+route_distance,200,0.9928411827350442,0.4398485916130468,TRUE,Fail to reject H0: approximately normal (p>0.05)
+passenger_demand,200,0.9927220421608544,0.4249171433390079,TRUE,Fail to reject H0: approximately normal (p>0.05)

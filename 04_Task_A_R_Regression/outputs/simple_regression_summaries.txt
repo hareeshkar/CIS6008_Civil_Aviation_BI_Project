@@ -1,0 +1,162 @@
+
+
+======== SIMPLE REGRESSION: passenger_demand ~ airport_traffic ========
+
+Call:
+lm(formula = as.formula(paste(var_dv, "~", iv)), data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-144234  -31671       9   32371  124420 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     1.954e+04  1.543e+04   1.267    0.207    
+airport_traffic 4.459e-01  7.587e-02   5.877 1.75e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 49820 on 198 degrees of freedom
+Multiple R-squared:  0.1485,	Adjusted R-squared:  0.1442 
+F-statistic: 34.54 on 1 and 198 DF,  p-value: 1.746e-08
+
+
+--- 95% CI ---
+                        2.5 %       97.5 %
+(Intercept)     -1.087974e+04 4.996431e+04
+airport_traffic  2.962749e-01 5.955066e-01
+
+
+======== SIMPLE REGRESSION: passenger_demand ~ avg_income ========
+
+Call:
+lm(formula = as.formula(paste(var_dv, "~", iv)), data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-163904  -39056    3439   32650  162735 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 9.293e+04  2.165e+04   4.293 2.76e-05 ***
+avg_income  2.253e-01  3.228e-01   0.698    0.486    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 53930 on 198 degrees of freedom
+Multiple R-squared:  0.002455,	Adjusted R-squared:  -0.002583 
+F-statistic: 0.4873 on 1 and 198 DF,  p-value: 0.4859
+
+
+--- 95% CI ---
+                    2.5 %       97.5 %
+(Intercept) 50240.2025305 1.356285e+05
+avg_income     -0.4111681 8.617824e-01
+
+
+======== SIMPLE REGRESSION: passenger_demand ~ fuel_price ========
+
+Call:
+lm(formula = as.formula(paste(var_dv, "~", iv)), data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-171128  -37345     950   32046  154610 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    80358      23005   3.493 0.000589 ***
+fuel_price     30946      25575   1.210 0.227717    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 53790 on 198 degrees of freedom
+Multiple R-squared:  0.00734,	Adjusted R-squared:  0.002327 
+F-statistic: 1.464 on 1 and 198 DF,  p-value: 0.2277
+
+
+--- 95% CI ---
+                2.5 %    97.5 %
+(Intercept)  34991.44 125724.74
+fuel_price  -19488.02  81379.09
+
+
+======== SIMPLE REGRESSION: passenger_demand ~ avg_ticket_fare ========
+
+Call:
+lm(formula = as.formula(paste(var_dv, "~", iv)), data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-167766  -39458    1938   32247  161299 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     117860.69   23792.86   4.954 1.56e-06 ***
+avg_ticket_fare    -40.14      93.80  -0.428    0.669    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 53970 on 198 degrees of freedom
+Multiple R-squared:  0.0009239,	Adjusted R-squared:  -0.004122 
+F-statistic: 0.1831 on 1 and 198 DF,  p-value: 0.6692
+
+
+--- 95% CI ---
+                    2.5 %      97.5 %
+(Intercept)     70940.761 164780.6258
+avg_ticket_fare  -225.124    144.8454
+
+
+======== SIMPLE REGRESSION: passenger_demand ~ flight_frequency ========
+
+Call:
+lm(formula = as.formula(paste(var_dv, "~", iv)), data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-163187  -37944    1816   32253  158458 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)       89786.9    24797.9   3.621 0.000373 ***
+flight_frequency    147.1      199.9   0.736 0.462842    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 53920 on 198 degrees of freedom
+Multiple R-squared:  0.002725,	Adjusted R-squared:  -0.002311 
+F-statistic: 0.5411 on 1 and 198 DF,  p-value: 0.4628
+
+
+--- 95% CI ---
+                      2.5 %      97.5 %
+(Intercept)      40884.9114 138688.8602
+flight_frequency  -247.1827    541.3055
+
+
+======== SIMPLE REGRESSION: passenger_demand ~ route_distance ========
+
+Call:
+lm(formula = as.formula(paste(var_dv, "~", iv)), data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-170698  -41978    2295   33646  157655 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    116167.628  14910.763   7.791 3.67e-13 ***
+route_distance     -5.379      9.279  -0.580    0.563    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 53950 on 198 degrees of freedom
+Multiple R-squared:  0.001694,	Adjusted R-squared:  -0.003348 
+F-statistic: 0.3361 on 1 and 198 DF,  p-value: 0.5628
+
+
+--- 95% CI ---
+                     2.5 %       97.5 %
+(Intercept)    86763.34303 145571.91336
+route_distance   -23.67753     12.91936

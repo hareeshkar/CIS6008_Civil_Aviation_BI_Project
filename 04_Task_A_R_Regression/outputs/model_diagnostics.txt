@@ -1,0 +1,42 @@
+=== MODEL DIAGNOSTICS (Multiple Regression) ===
+
+--- VIF (variance inflation factor) ---
+# A tibble: 6 × 3
+  term               VIF  GVIF
+  <chr>            <dbl> <dbl>
+1 airport_traffic   1.05  1.05
+2 avg_income        1.04  1.04
+3 fuel_price        1.04  1.04
+4 avg_ticket_fare   1.06  1.06
+5 flight_frequency  1.06  1.06
+6 route_distance    1.03  1.03
+
+Note: VIF >5 suggests moderate collinearity, >10 severe.
+
+--- Residual normality (Shapiro-Wilk on residuals) ---
+W=0.9943 p=0.6501 -> Fail to reject normality
+
+--- Homoscedasticity (Breusch-Pagan) ---
+
+	studentized Breusch-Pagan test
+
+data:  m_multi
+BP = 4.8406, df = 6, p-value = 0.5644
+
+
+--- Autocorrelation (Durbin-Watson) ---
+
+	Durbin-Watson test
+
+data:  m_multi
+DW = 2.0712, p-value = 0.6972
+alternative hypothesis: true autocorrelation is greater than 0
+
+
+--- Leverage / Influence ---
+Max Cook's distance: 0.0618119 
+Max hat value: 0.1013481 
+
+--- Residual summary ---
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-135506  -30459    1322       0   31761  122302 

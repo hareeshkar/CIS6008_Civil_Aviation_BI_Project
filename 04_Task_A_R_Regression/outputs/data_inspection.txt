@@ -1,0 +1,44 @@
+=== STRUCTURE ===
+tibble [200 × 7] (S3: tbl_df/tbl/data.frame)
+ $ airport_traffic : num [1:200] 224836 193087 232384 276151 188292 ...
+ $ avg_income      : num [1:200] 69293 71729 77997 77646 48468 ...
+ $ fuel_price      : num [1:200] 0.661 0.81 0.901 0.907 0.832 ...
+ $ avg_ticket_fare : num [1:200] 280 213 285 304 267 ...
+ $ flight_frequency: num [1:200] 139 110 122 111 111 ...
+ $ route_distance  : num [1:200] 2060 1870 1524 1241 1779 ...
+ $ passenger_demand: num [1:200] 124866 85800 126878 164130 97608 ...
+NULL
+
+=== SUMMARY ===
+ airport_traffic    avg_income       fuel_price     avg_ticket_fare
+ Min.   : 69013   Min.   : 26105   Min.   :0.5293   Min.   :142.1  
+ 1st Qu.:164744   1st Qu.: 57730   1st Qu.:0.7809   1st Qu.:221.7  
+ Median :199790   Median : 65946   Median :0.8884   Median :250.9  
+ Mean   :197961   Mean   : 66030   Mean   :0.8872   Mean   :250.4  
+ 3rd Qu.:225043   3rd Qu.: 73247   3rd Qu.:0.9858   3rd Qu.:277.4  
+ Max.   :336008   Max.   :111233   Max.   :1.3618   Max.   :355.3  
+ flight_frequency route_distance   passenger_demand
+ Min.   : 71.52   Min.   : 341.5   Min.   :-60240  
+ 1st Qu.:109.38   1st Qu.:1298.3   1st Qu.: 68592  
+ Median :122.61   Median :1579.1   Median :109586  
+ Mean   :122.57   Mean   :1553.5   Mean   :107811  
+ 3rd Qu.:134.37   3rd Qu.:1849.4   3rd Qu.:140320  
+ Max.   :170.54   Max.   :2475.9   Max.   :268128  
+
+=== MISSING VALUES PER COLUMN ===
+ airport_traffic       avg_income       fuel_price  avg_ticket_fare 
+               0                0                0                0 
+flight_frequency   route_distance passenger_demand 
+               0                0                0 
+
+=== MISSING TOTAL ===
+[1] 0
+
+=== ANY DUPLICATED ROWS ===
+[1] 0
+
+=== DATA TYPES ===
+ airport_traffic       avg_income       fuel_price  avg_ticket_fare 
+       "numeric"        "numeric"        "numeric"        "numeric" 
+flight_frequency   route_distance passenger_demand 
+       "numeric"        "numeric"        "numeric" 

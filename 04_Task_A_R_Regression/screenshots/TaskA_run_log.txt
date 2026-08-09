@@ -1,0 +1,5 @@
+Task A Rscript run log saved from outputs — see:
+- plots/correlation_plot.png
+- plots/diagnostics_residuals_vs_fitted.png
+- outputs/multiple_regression_summary.txt
+Terminal output captured in bash log 2026-08-09
