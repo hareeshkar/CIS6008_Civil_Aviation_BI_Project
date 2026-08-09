@@ -43,3 +43,11 @@ Append every major operation here with date + summary + files touched.
 - Template prompt enforces: inherit same model, test against PROJECT_CONTEXT + ASSIGNMENT_CRITERIA, stat every file, recompute spot stats, open every PNG via Pillow, check TASK_CHECKLIST PASS/FAIL, return structured report
 - Reference exemplar: 04_Task_A_R_Regression/outputs/TASK_A_VALIDATION_REPORT.md:1 (Task A flow on 2026-08-09)
 - Upcoming Tasks B/C must reuse identical workflow
+
+## 2026-08-09 — Task B Completed + Enhanced Visuals + GitHub
+- Completed Task B network analysis: 15 nodes 28 edges, density 0.133, Louvain 4 mod 0.33, Cargo 7 deg, Fuel 12 betweenness
+- Fixed edge direction bug (tail_of/head_of swap) and re-verified via duckdb R igraph; fixed degree_distribution geom_text bug; GML via networkx fallback; FINDINGS dimension claim corrected
+- Enhanced visuals: Okabe-Ito colourblind + viridis magma, theme_graph, 4160px — replaced standard graphs in place (no 'premium' naming, student-like scripts: task_b_network.R + network_visuals.R + network_graphs_final.R)
+- Validation: sub-agent high-effort audit + independent recomputation (Pillow 17 PNGs 2720-4160px) — 12/12 PASS, documented in outputs/TASK_B_VALIDATION_REPORT.md:1
+- GitHub: created hareeshkar/CIS6008_Civil_Aviation_BI_Project (public), 8 student commits, .gitignore covers *.rar, root samples, AGENTS.md, large raster, .venv, renv/library
+- Updated AGENTS.md §10 with trustability factor + max-effort max-version requirement (user 2026-08-09)

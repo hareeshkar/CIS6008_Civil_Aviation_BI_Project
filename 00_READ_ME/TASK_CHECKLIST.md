@@ -19,17 +19,17 @@
 
 ## Task B — Network Analysis (R) — `05_Task_B_Network_Analysis/` — 20 marks
 
-- [ ] Copy `03_Original_Datasets/Task_B/SriLanka_Aviation_SNA_Dataset.csv` → `working_data/`
-- [ ] `scripts/task_b_network.R` (igraph, tidygraph, ggraph) — builds directed weighted graph
-- [ ] Inspect: node count, edge count, components, density → `outputs/graph_summary.txt`
-- [ ] Metrics CSV: degree (in/out/total/weighted), betweenness, closeness, eigenvector → `metrics/node_centrality.csv`
-- [ ] Top 3 hubs (degree) + top 3 bridges (betweenness) identified with values
-- [ ] Communities: Louvain/Walktrap → `metrics/communities.csv` + `graphs/network_louvain.png`
-- [ ] Layout exports: Fruchterman-Reingold + Kamada-Kawai → `graphs/network_*.png`
-- [ ] Vulnerability: articulation points, edge criticality, what-if removal of BIA/CAASL → `outputs/vulnerability.md`
-- [ ] Resilience recommendations (redundancy, MRIA, coordination)
-- [ ] Export `outputs/graph.graphml` + `outputs/graph.gml`
-- [ ] Screenshots
+- [x] Copy `03_Original_Datasets/Task_B/SriLanka_Aviation_SNA_Dataset.csv` → `working_data/`
+- [x] `scripts/task_b_network.R` (igraph, tidygraph, ggraph) — builds directed weighted graph
+- [x] Inspect: node count, edge count, components, density → `outputs/graph_summary.txt`
+- [x] Metrics CSV: degree (in/out/total/weighted), betweenness, closeness, eigenvector → `metrics/node_centrality.csv`
+- [x] Top 3 hubs (degree) + top 3 bridges (betweenness) identified with values
+- [x] Communities: Louvain/Walktrap → `metrics/communities.csv` + `graphs/network_louvain.png`
+- [x] Layout exports: Fruchterman-Reingold + Kamada-Kawai → `graphs/network_*.png`
+- [x] Vulnerability: articulation points, edge criticality, what-if removal of BIA/CAASL → `outputs/vulnerability.md`
+- [x] Resilience recommendations (redundancy, MRIA, coordination)
+- [x] Export `outputs/graph.graphml` + `outputs/graph.gml`
+- [x] Screenshots
 
 ## Task C — GIS + PostGIS Radar Suitability — `06_Task_C_QGIS/` — 30 marks — Lecturer guide is the recipe
 
