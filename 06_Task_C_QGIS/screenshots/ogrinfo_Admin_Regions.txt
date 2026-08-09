@@ -1,0 +1,6 @@
+File: Admin Regions.shp
+Rows: 2
+CRS: EPSG:5234
+Geom: ['Polygon']
+Cols: ['id', 'Name', 'geometry']
+Bounds: [ 99713.26101966 217622.23192791 103178.45615706 221654.71685588]

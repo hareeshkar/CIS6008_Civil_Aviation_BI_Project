@@ -1,0 +1,6 @@
+File: Air Force Base Katunayake.shp
+Rows: 1
+CRS: EPSG:5234
+Geom: ['Polygon']
+Cols: ['id', 'Name', 'geometry']
+Bounds: [ 99713.26101966 218733.17443444 102336.97630105 221631.07978127]

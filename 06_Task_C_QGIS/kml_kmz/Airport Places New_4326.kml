@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document id="root_doc">
+    <Schema id="Airport_Places_New_4326" name="Airport_Places_New_4326">
+      <SimpleField name="id" type="float"/>
+      <SimpleField name="descriptio" type="string"/>
+      <SimpleField name="timestamp" type="string"/>
+      <SimpleField name="begin" type="string"/>
+      <SimpleField name="end" type="string"/>
+      <SimpleField name="altitudeMo" type="string"/>
+      <SimpleField name="tessellate" type="float"/>
+      <SimpleField name="extrude" type="float"/>
+      <SimpleField name="visibility" type="float"/>
+      <SimpleField name="drawOrder" type="float"/>
+      <SimpleField name="icon" type="string"/>
+      <SimpleField name="type" type="string"/>
+      <SimpleField name="size" type="float"/>
+    </Schema>
+    <Schema id="Airport_Places_New_4326.schema">
+      <SimpleField name="descriptio" type="string"/>
+      <SimpleField name="altitudeMo" type="string"/>
+      <SimpleField name="type" type="string"/>
+      <SimpleField name="size" type="double"/>
+    </Schema>
+    <Schema id="Airport_Places_New_4326.schema">
+      <SimpleField name="descriptio" type="string"/>
+      <SimpleField name="altitudeMo" type="string"/>
+      <SimpleField name="type" type="string"/>
+      <SimpleField name="size" type="double"/>
+    </Schema>
+    <Folder>
+      <name>Airport_Places_New_4326</name>
+      <Placemark id="Airport_Places_New_4326.1">
+        <name>Smoke Room Practice Area</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8786873544454,7.1858109033907,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.2">
+        <name>Rescue Traning Tower</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8794875053436,7.18541112621683,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.3">
+        <name><![CDATA[Wo & SNCO Mess]]></name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8789294391986,7.18348838107137,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.4">
+        <name>C44 Billet</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8781561278604,7.1816492347796,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.5">
+        <name>Electronic and Telecommunication</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8793695073291,7.17979031670251,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.6">
+        <name>Command Agro SLAF Base Katunayake</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8712135484402,7.17813243284839,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.7">
+        <name>Air Force Ground Katunayake</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">AirForce</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8716254728826,7.18715220611996,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.8">
+        <name>BIA Control Tower</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.886690522936,7.17890309012431,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.9">
+        <name>C242 Airman Bilate</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.874018133476,7.18814023450873,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.10">
+        <name>Ceylon Petroleum Corporation Aviation</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8802338023693,7.16843543232756,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.11">
+        <name>Air Cargo Village Entrance</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8810069803522,7.16688516107892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.12">
+        <name>Departure Terminal</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8871288167217,7.17336114003176,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.13">
+        <name>Arrival Terminal</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8880990958464,7.17438039921492,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.14">
+        <name>Terminal Car Park</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8884860661567,7.17589729188669,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.15">
+        <name>Runaway Center Point</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="descriptio">The total distance of the runaway calcualted as 3300m.</SimpleData>
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8837785020933,7.18117684586281,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.16">
+        <name>Sri Lanka Air Force Base Katunayake</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326">
+            <SimpleData name="type">AirForce</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8761282215423,7.18242803974213,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Document id="Airport_Places_New_4326">
+      <name>Airport Places New_4326</name>
+      <Placemark id="Airport_Places_New_4326.1">
+        <name>Smoke Room Practice Area</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8786873544454,7.1858109033907,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.2">
+        <name>Rescue Traning Tower</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8794875053436,7.18541112621683,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.3">
+        <name><![CDATA[Wo & SNCO Mess]]></name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8789294391986,7.18348838107137,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.4">
+        <name>C44 Billet</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8781561278604,7.1816492347796,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.5">
+        <name>Electronic and Telecommunication</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8793695073291,7.17979031670251,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.6">
+        <name>Command Agro SLAF Base Katunayake</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8712135484402,7.17813243284839,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.7">
+        <name>Air Force Ground Katunayake</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">AirForce</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8716254728826,7.18715220611996,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.8">
+        <name>BIA Control Tower</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.886690522936,7.17890309012431,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.9">
+        <name>C242 Airman Bilate</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.874018133476,7.18814023450873,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.10">
+        <name>Ceylon Petroleum Corporation Aviation</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8802338023693,7.16843543232756,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.11">
+        <name>Air Cargo Village Entrance</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8810069803522,7.16688516107892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.12">
+        <name>Departure Terminal</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8871288167217,7.17336114003176,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.13">
+        <name>Arrival Terminal</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8880990958464,7.17438039921492,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.14">
+        <name>Terminal Car Park</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8884860661567,7.17589729188669,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.15">
+        <name>Runaway Center Point</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="descriptio">The total distance of the runaway calcualted as 3300m.</SimpleData>
+            <SimpleData name="tessellate">-1</SimpleData>
+            <SimpleData name="extrude">0</SimpleData>
+            <SimpleData name="visibility">0</SimpleData>
+            <SimpleData name="type">Other</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8837785020933,7.18117684586281,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark id="Airport_Places_New_4326.16">
+        <name>Sri Lanka Air Force Base Katunayake</name>
+        <ExtendedData>
+          <SchemaData schemaUrl="#Airport_Places_New_4326.schema">
+            <SimpleData name="type">AirForce</SimpleData>
+            <SimpleData name="size">0</SimpleData>
+          </SchemaData>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            79.8761282215423,7.18242803974213,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Document>
+  </Document>
+</kml>

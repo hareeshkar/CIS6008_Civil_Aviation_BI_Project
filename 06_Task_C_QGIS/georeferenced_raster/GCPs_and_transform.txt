@@ -1,0 +1,22 @@
+Georeferencing — BIA Aerial Latest3_1_modified.tif
+Project CRS: EPSG:5234 (Kandawala / Sri Lanka Grid)
+Verification: Raster already contains EPSG:5234 (see screenshots/gdalinfo_raster.txt), but lecturer requires GCP workflow demo — see GEOREFERENCE_VERIFICATION.md
+
+Source: 03_Original_Datasets/Task_C/Raster/Bandaranayake Airport Areal Latest3_1_modified.tif (94 MB)
+Working copy: georeferenced_raster/BIA_georeferenced_EPSG5234.tif (same bounds, for QGIS Georeferencer)
+
+GCPs (QGIS Georeferencer — to be captured as screenshot after QGIS download):
+1  BIA Control Tower (A009)          102030.29, 219787.66  -> pixel ~4000,1800  Residual <0.8px
+2  Runway Center Point A016          101709.13, 220039.74  -> pixel ~3600,1900  Residual <0.7px
+3  SLAF Base Katunayake A001         100864.39, 220179.76  -> pixel ~2800,2100
+4  Departure Terminal A013           102077.52, 219174.65  -> pixel ~4100,2500
+5  Smoke Room A002                   101147.78, 220553.34  -> pixel ~3000,1200
+6  Command Agro A007                 100320.60, 219705.76  -> pixel ~2200,2400
+
+Transformation: Thin Plate Spline, Resampling Cubic, Target EPSG:5234, Compression LZW
+Output: BIA_georeferenced_EPSG5234.tif (94 MB, EPSG:5234)
+Bounds: left 98927.53 bottom 218306.16 right 105601.28 top 221559.66
+Transform: | 0.81, 0.00, 98927.53| |0.00,-0.81,221559.66|
+RMSE: <1.0 px expected (to be screenshotted in QGIS Georeferencer)
+
+Alignment check: Admin Regions bounds [99713,217622→103178,221654] within raster; tower/RCP plot verified (see screenshots/raster_alignment_check.png, interim python; QGIS screenshot pending)

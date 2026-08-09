@@ -1,0 +1,6 @@
+File: Air Force Base Region.shp
+Rows: 0
+CRS: EPSG:5234
+Geom: []
+Cols: ['id', 'Name', 'geometry']
+Bounds: [nan nan nan nan]

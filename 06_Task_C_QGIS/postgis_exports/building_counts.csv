@@ -1,0 +1,12 @@
+metric,value
+smr_suitable_area_m2,17416.57340061026
+psr_2km_slaf_area_m2,3811372.3195024133
+psr_3km_slaf_area_m2,3903615.256989997
+slaf_total_area_m2,3903615.25699
+buildings_proxy_total_area_m2,5018.477584873511
+buildings_in_smr_count,0.0
+buildings_in_psr2_count,9.0
+buildings_in_smr_area_m2,0.0
+buildings_in_psr2_area_m2,2822.893641491351
+available_land_smr_m2,17416.57340061026
+available_land_psr2_m2,3808549.425860922

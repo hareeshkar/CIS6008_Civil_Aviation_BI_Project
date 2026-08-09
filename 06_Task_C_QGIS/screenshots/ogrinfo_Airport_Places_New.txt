@@ -1,0 +1,6 @@
+File: Airport Places New.shp
+Rows: 16
+CRS: EPSG:5234
+Geom: ['Point']
+Cols: ['id', 'Name', 'descriptio', 'timestamp', 'begin', 'end', 'altitudeMo', 'tessellate', 'extrude', 'visibility', 'drawOrder', 'icon', 'geometry']
+Bounds: [100320.60309587 218459.75450192 102227.97754414 220811.9588484 ]

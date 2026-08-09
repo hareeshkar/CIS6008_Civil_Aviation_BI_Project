@@ -1,0 +1,6 @@
+File: Airport Places.shp
+Rows: 15
+CRS: EPSG:4326
+Geom: ['Point']
+Cols: ['id', 'Name', 'descriptio', 'timestamp', 'begin', 'end', 'altitudeMo', 'tessellate', 'extrude', 'visibility', 'drawOrder', 'icon', 'geometry']
+Bounds: [79.87121352  7.16688516 79.88848603  7.18814023]
