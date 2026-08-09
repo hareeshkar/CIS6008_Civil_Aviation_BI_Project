@@ -1,0 +1,98 @@
+# CIS6008 — Civil Aviation BI Project
+# Student repo — ignore large binaries, agent instructions, and local env
+
+# ── Provided archives & flat samples at project root only (organised copies in 01/02/03 are kept) ──
+/*.rar
+/*.zip
+/*.7z
+/*.tar.gz
+# Flat files at root that are duplicates of organised copies (keep 01/02/03 versions)
+# Use root-only slash to avoid ignoring organised briefs
+/ABI-CIS6008-SEP-2026-Dataset*
+/Task*.docx
+/Task*.pdf
+/icbtcis6008*.pdf
+/powerBI*.zip
+/*powerBI*.pbix.zip
+
+# ── Agent / local instructions — not for submission ──
+/AGENTS.md
+/CLAUDE.md
+/.cursor/
+/.opencode/
+
+# ── Large GIS raster & mirror (keep organised copy in 03/ but ignore for GitHub) ──
+# The 94 MB aerial TIFF exceeds GitHub 100 MB warning; ignored — see 03_Original_Datasets/README.md
+03_Original_Datasets/Task_C/Raster/*.tif
+03_Original_Datasets/_RAR_Mirror/
+99_TEMP/
+
+# ── Python ──
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyc
+.env
+pip-log.txt
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.pytest_cache/
+*.ipynb_checkpoints
+
+# ── R ──
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+# Keep renv.lock for reproducibility, ignore library binaries only
+renv/library/
+renv/staging/
+renv/cache/
+04_Task_A_R_Regression/renv/library/
+04_Task_A_R_Regression/renv/staging/
+05_Task_B_Network_Analysis/renv/library/
+05_Task_B_Network_Analysis/renv/staging/
+*.Rproj
+
+# ── QGIS / PostGIS ──
+*.qgs~
+*.qgz~
+QGIS/*.log
+# PostGIS dumps (if exported)
+*.sql
+*.dump
+*.backup
+
+# ── Power BI (keep spec, ignore binaries) ──
+*.pbix
+*.pbit
+07_Task_D_PowerBI_SKIPPED/*.pbix
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*~
+
+# ── Logs ──
+*.log
+12_AGENT_LOGS/*.log
+screenshots/*.log
+
+# ── Editor ──
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Secrets ──
+credentials.json
+private_key.pem
+passwords.txt
+.env.local
+config/secrets/*

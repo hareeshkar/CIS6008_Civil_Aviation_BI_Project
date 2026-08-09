@@ -1,0 +1,11 @@
+# Project-local deps — install with: .venv/bin/pip install -r requirements.txt
+pandas==3.0.5
+duckdb==1.5.5
+psycopg2-binary==2.9.12
+openpyxl==3.1.5
+pypdf==6.15.0
+pdfminer.six
+# Heavy geospatial — install before Task C if needed (not yet):
+# geopandas
+# pyarrow
+# shapely
