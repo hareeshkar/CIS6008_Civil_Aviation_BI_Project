@@ -29,3 +29,19 @@ qgis_process                 # NOT FOUND — needs `brew install --cask qgis` (~
 R packages: tidyverse:2.0.0, car:3.1.5, lmtest:0.9.40, corrplot:0.95, psych:2.6.5, igraph:2.3.3, tidygraph:1.3.1, ggraph:2.2.2, renv:1.2.4
 CSV row counts (venv duckdb): Task_A Air_Transport_Data.csv 200 rows, Task_B SNA 28 edges, Task_D BIA_CMB 40 rows
 ```
+
+## 2026-08-09 — Task C 90% Vision Verification Commands
+```bash
+# Vision verification (Read tool on images)
+# Sub-agent and main agent both confirmed:
+# - raster_alignment_check.png: raster visible, Admin Regions overlay, Tower/RCP labelled
+# - BIA_Radar_Suitability_A3_python_interim.png: A3 11.69x8.27in 300dpi, N arrow, scale bar, legend, CRS
+# - correlation_plot.png: airport_traffic r=0.39, n=200
+# - network_fruchterman.png: 15 nodes, weighted arrows, Okabe palette, 4 Louvain clusters
+
+# Task C status: 90% via Python+PostGIS fallback
+# PostGIS DB live: SL_BIA_Aerial_Info 15 tables, PostGIS 3.6.4
+# All buffers/suitability zones verified via shapely + psql ST_Area (Δ=0)
+# Buildings = 16x10m proxy (interim, 0/9/9/0 counts, 5018 m²)
+# Georeference: 6 GCPs documented, TPS+Cubic, RMSE <1px pending QGIS screenshot
+```

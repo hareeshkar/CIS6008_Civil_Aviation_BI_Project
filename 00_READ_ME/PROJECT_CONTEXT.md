@@ -8,6 +8,17 @@ Complete **CIS6008 Analytics and Business Intelligence** coursework — using st
 
 Module: `CIS6008 Analytics and Business Intelligence`, Semester 2 2026, Leader `induranga@icbtcampus.edu.lk`. Assessment `PRE1` presentation is 20% weighting; practical weighting inferred from brief structure as A 30 / B 20 / C 30 / D 20.
 
+## 1.1 Current Status (2026-08-09)
+
+| Task | Marks | Status | Evidence |
+|---|---|---|---|
+| **A — Regression** | 30 | ✅ **COMPLETE** | `04_Task_A_R_Regression/outputs/TASK_A_VALIDATION_REPORT.md:1` (10/10 PASS, 34 PNGs vision-verified) + `TASK_A_FINDINGS.md:1` |
+| **B — Network** | 20 | ✅ **COMPLETE** | `05_Task_B_Network_Analysis/outputs/TASK_B_VALIDATION_REPORT.md:1` (12/12 PASS, 17 PNGs vision-verified, edge direction fix) + `TASK_B_FINDINGS.md:1` |
+| **C — GIS** | 30 | 🟡 **90% (Python+PostGIS)** | `06_Task_C_QGIS/TASK_C_STATUS.md:1` — 100% numeric verified, QGIS-native evidence pending QGIS download |
+| **D — Power BI** | 20 | ❌ **SKIPPED (Mac)** | `07_Task_D_PowerBI_SKIPPED/` (empty — task D scoped to Windows) |
+
+Sub-agent max-effort audits: `ses_0194dd4a` (Task B), `ses_0184dc133` (Task C). Vision-verified by main agent via `Read` tool (BIA aerial raster, N arrow, scale bar, all PNGs checked).
+
 ---
 
 ## 2. Assignment Tasks — Definitive Map
@@ -91,7 +102,7 @@ CIS6008_Civil_Aviation_BI_Project/
 │   └── _RAR_Mirror/ABI-CIS6008-SEP-2026-Dataset - Final/Question-(a..d)/
 ├── 04_Task_A_R_Regression/{scripts,outputs,plots,tables,screenshots,working_data,renv,.venv}
 ├── 05_Task_B_Network_Analysis/{scripts,outputs,graphs,metrics,screenshots,working_data,renv}
-├── 06_Task_C_QGIS/{qgis_project,georeferenced_raster,digitized_layers,buffers,intersections,suitability_zones,kml_kmz,postgis_exports,final_maps,screenshots}
+├── 06_Task_C_QGIS/{qgis_project,georeferenced_raster,digitized_layers,buffers,intersections,suitability_zones,kml_kmz,postgis_exports,final_maps,screenshots,TASK_C_STATUS.md}
 ├── 07_Task_D_PowerBI_SKIPPED/{cleaned_data,dax_spec,screenshots}  # notes only
 ├── 12_AGENT_LOGS/{actions.md,decisions.md,errors.md,commands_used.md}
 └── 99_TEMP/                             # transient — cleaned after each major phase
