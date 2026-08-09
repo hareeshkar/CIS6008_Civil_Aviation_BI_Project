@@ -1,0 +1,16 @@
+node,louvain,walktrap,fastgreedy,degree_total,betweenness
+Air Traffic Control (ATC),1,3,3,4,6
+Airport & Aviation Services SL (AASL),2,1,1,1,0
+Bandaranaike International Airport (CMB),3,1,2,5,0
+Cargo Operators,2,1,1,7,0
+Civil Aviation Authority of Sri Lanka (CAASL),1,3,3,4,0
+Customs & Immigration,3,1,2,6,11
+Fuel Supply Companies,3,1,2,5,12
+Ground Handling Unit,3,1,2,1,0
+International Airlines,3,1,2,3,6
+Maintenance & Engineering,4,1,4,3,4
+Mattala Rajapaksa International Airport (MRIA),2,2,1,4,0
+Mihin Lanka,1,3,3,3,1
+Sri Lanka Air Force,4,1,4,5,1
+SriLankan Airlines,2,2,1,2,2
+Tourism Authority,2,2,1,3,1

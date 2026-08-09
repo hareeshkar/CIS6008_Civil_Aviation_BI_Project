@@ -1,0 +1,6 @@
+Command: Rscript 05_Task_B_Network_Analysis/scripts/task_b_network.R
+Edges: 28, Nodes: 15, Density 0.133, 4 Louvain communities mod 0.331
+Top hubs: Cargo Operators degree 7, Customs 6, BIA 5
+Top bridges: Fuel Supply 12, Customs 11, ATC 6
+Vulnerability: articulation points 2 (Cargo, Fuel), bridges 2
+Outputs: graph.graphml 7.9K, graph.gml via python, 14 graphs PNGs

@@ -1,0 +1,34 @@
+=== NETWORK-LEVEL METRICS ===
+Nodes: 15  Edges: 28  Directed: TRUE 
+Density: 0.1333
+Reciprocity: 0.0000
+Global transitivity (clustering): 0.2784
+Avg local transitivity: 0.2465
+Diameter (unweighted): 4
+Diameter (weighted distance): 22.00
+Avg path length (unconnected -> NA if disconnected): 1.6545
+Weak components: 1 (largest 15 nodes)
+Strong components: 15 (largest 1 nodes)
+Articulation points (2): Cargo Operators, Fuel Supply Companies
+Bridges (cut-edges) (2): 2 edges
+
+--- Top hubs (by degree_total) ---
+# A tibble: 3 × 5
+  node                          degree_total degree_in degree_out strength_total
+  <chr>                                <dbl>     <dbl>      <dbl>          <dbl>
+1 Cargo Operators                          7         7          0             35
+2 Customs & Immigration                    6         4          2             32
+3 Bandaranaike International A…            5         0          5             26
+
+--- Top bridges (betweenness) ---
+# A tibble: 3 × 4
+  node                      betweenness betweenness_norm closeness
+  <chr>                           <dbl>            <dbl>     <dbl>
+1 Fuel Supply Companies              12           0.0659     0.189
+2 Customs & Immigration              11           0.0604     0.171
+3 Air Traffic Control (ATC)           6           0.0330     0.109
+
+--- Components (weak) ---
+
+15 
+ 1 

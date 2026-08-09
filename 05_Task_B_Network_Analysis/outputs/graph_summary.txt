@@ -1,0 +1,54 @@
+=== TASK B NETWORK SUMMARY ===
+Source CSV: /Users/hareeshkar/Documents/CIS6008_Civil_Aviation_BI_Project/05_Task_B_Network_Analysis/working_data/SriLanka_Aviation_SNA_Dataset.csv 
+Edges (rows): 28 
+Distinct nodes: 15 
+Distinct sources: 14  distinct targets: 10 
+Relationships (4): Commercial, Operational, Regulatory, Support 
+Weight stats: min 1 max 9 mean 4.64  sd 2.64 
+
+--- Edge counts by Relationship ---
+
+ Commercial Operational  Regulatory     Support 
+         10           6           5           7 
+
+--- Out-degree (Source) ---
+
+      Bandaranaike International Airport (CMB) 
+                                             5 
+ Civil Aviation Authority of Sri Lanka (CAASL) 
+                                             4 
+Mattala Rajapaksa International Airport (MRIA) 
+                                             4 
+                           Sri Lanka Air Force 
+                                             3 
+                         Customs & Immigration 
+                                             2 
+                         Fuel Supply Companies 
+                                             2 
+                     Air Traffic Control (ATC) 
+                                             1 
+         Airport & Aviation Services SL (AASL) 
+                                             1 
+                          Ground Handling Unit 
+                                             1 
+                        International Airlines 
+                                             1 
+                     Maintenance & Engineering 
+                                             1 
+                                   Mihin Lanka 
+                                             1 
+                            SriLankan Airlines 
+                                             1 
+                             Tourism Authority 
+                                             1 
+
+--- In-degree (Target) ---
+
+          Cargo Operators     Customs & Immigration Air Traffic Control (ATC) 
+                        7                         4                         3 
+    Fuel Supply Companies    International Airlines Maintenance & Engineering 
+                        3                         2                         2 
+              Mihin Lanka       Sri Lanka Air Force         Tourism Authority 
+                        2                         2                         2 
+       SriLankan Airlines 
+                        1 

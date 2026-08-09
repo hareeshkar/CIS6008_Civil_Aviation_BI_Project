@@ -1,0 +1,29 @@
+from,to,Relationship,Weight,distance,edge_betweenness
+Customs & Immigration,International Airlines,Commercial,9,1,13
+Fuel Supply Companies,Customs & Immigration,Operational,9,1,12
+Air Traffic Control (ATC),Maintenance & Engineering,Commercial,4,6,8
+International Airlines,Tourism Authority,Support,2,8,8
+Bandaranaike International Airport (CMB),Fuel Supply Companies,Regulatory,8,2,5
+Civil Aviation Authority of Sri Lanka (CAASL),Fuel Supply Companies,Regulatory,2,8,5
+SriLankan Airlines,Air Traffic Control (ATC),Support,1,9,5
+Ground Handling Unit,Fuel Supply Companies,Operational,4,6,5
+Maintenance & Engineering,Cargo Operators,Support,6,4,5
+Mihin Lanka,Air Traffic Control (ATC),Support,7,3,4
+Fuel Supply Companies,Cargo Operators,Commercial,9,1,4
+Mattala Rajapaksa International Airport (MRIA),SriLankan Airlines,Commercial,3,7,3
+Sri Lanka Air Force,Maintenance & Engineering,Regulatory,7,3,3
+Sri Lanka Air Force,Customs & Immigration,Support,3,7,3
+Bandaranaike International Airport (CMB),Mihin Lanka,Support,7,3,2
+Bandaranaike International Airport (CMB),Sri Lanka Air Force,Commercial,5,5,2
+Mattala Rajapaksa International Airport (MRIA),Customs & Immigration,Operational,2,8,2
+Civil Aviation Authority of Sri Lanka (CAASL),Air Traffic Control (ATC),Commercial,6,4,2
+Tourism Authority,Cargo Operators,Commercial,1,9,2
+Mattala Rajapaksa International Airport (MRIA),Tourism Authority,Regulatory,4,6,1
+Mattala Rajapaksa International Airport (MRIA),Cargo Operators,Commercial,7,3,1
+Civil Aviation Authority of Sri Lanka (CAASL),Mihin Lanka,Operational,4,6,1
+Civil Aviation Authority of Sri Lanka (CAASL),Sri Lanka Air Force,Commercial,2,8,1
+Airport & Aviation Services SL (AASL),Cargo Operators,Operational,7,3,1
+Customs & Immigration,Cargo Operators,Regulatory,4,6,1
+Bandaranaike International Airport (CMB),Customs & Immigration,Commercial,5,5,0
+Bandaranaike International Airport (CMB),Cargo Operators,Operational,1,9,0
+Sri Lanka Air Force,International Airlines,Support,1,9,0

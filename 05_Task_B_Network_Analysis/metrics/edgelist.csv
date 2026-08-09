@@ -1,0 +1,29 @@
+Source,Target,Relationship,Weight
+Bandaranaike International Airport (CMB),Mihin Lanka,Support,7
+Bandaranaike International Airport (CMB),Sri Lanka Air Force,Commercial,5
+Bandaranaike International Airport (CMB),Fuel Supply Companies,Regulatory,8
+Bandaranaike International Airport (CMB),Customs & Immigration,Commercial,5
+Bandaranaike International Airport (CMB),Cargo Operators,Operational,1
+Mattala Rajapaksa International Airport (MRIA),SriLankan Airlines,Commercial,3
+Mattala Rajapaksa International Airport (MRIA),Customs & Immigration,Operational,2
+Mattala Rajapaksa International Airport (MRIA),Tourism Authority,Regulatory,4
+Mattala Rajapaksa International Airport (MRIA),Cargo Operators,Commercial,7
+Civil Aviation Authority of Sri Lanka (CAASL),Mihin Lanka,Operational,4
+Civil Aviation Authority of Sri Lanka (CAASL),Sri Lanka Air Force,Commercial,2
+Civil Aviation Authority of Sri Lanka (CAASL),Air Traffic Control (ATC),Commercial,6
+Civil Aviation Authority of Sri Lanka (CAASL),Fuel Supply Companies,Regulatory,2
+Airport & Aviation Services SL (AASL),Cargo Operators,Operational,7
+SriLankan Airlines,Air Traffic Control (ATC),Support,1
+Mihin Lanka,Air Traffic Control (ATC),Support,7
+Sri Lanka Air Force,Maintenance & Engineering,Regulatory,7
+Sri Lanka Air Force,Customs & Immigration,Support,3
+Sri Lanka Air Force,International Airlines,Support,1
+Ground Handling Unit,Fuel Supply Companies,Operational,4
+Air Traffic Control (ATC),Maintenance & Engineering,Commercial,4
+Fuel Supply Companies,Customs & Immigration,Operational,9
+Fuel Supply Companies,Cargo Operators,Commercial,9
+Maintenance & Engineering,Cargo Operators,Support,6
+Customs & Immigration,International Airlines,Commercial,9
+Customs & Immigration,Cargo Operators,Regulatory,4
+International Airlines,Tourism Authority,Support,2
+Tourism Authority,Cargo Operators,Commercial,1
