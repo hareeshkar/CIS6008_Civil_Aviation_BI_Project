@@ -15,7 +15,7 @@ slaf = admin[admin["id"]==2222]
 places = gpd.read_file(base/"digitized_layers/Airport Places New.shp")
 tower = places[places["Name"]=="BIA Control Tower"]
 rcp = places[places["Name"]=="Runaway Center Point"]
-buildings = gpd.read_file(base/"digitized_layers/buildings.shp")
+buildings = gpd.read_file(base/"digitized_layers/buildings_real.gpkg")
 smr300 = gpd.read_file(base/"buffers/smr_300m_tower.gpkg")
 rcp200 = gpd.read_file(base/"buffers/rcp_200m.gpkg")
 psr2 = gpd.read_file(base/"buffers/psr_2km_rcp.gpkg")
@@ -64,7 +64,7 @@ if not smr_suit.empty:
     smr_suit.plot(ax=ax, color="#dc3545", edgecolor="#58151c", linewidth=1.5, alpha=0.80, label="SMR suitable 17,417 m² (300∩200 m)")
 
 # Buildings proxy (visualized)
-buildings.plot(ax=ax, color="#f4b400", edgecolor="#7a5c00", linewidth=0.5, alpha=0.85, label="Buildings (16×10 m proxy, 5,018 m²)")
+buildings.plot(ax=ax, color="#f4b400", edgecolor="#7a5c00", linewidth=0.5, alpha=0.85, label="Buildings (16 real, 27,912 m², 9 in PSR2)")
 
 # Tower/RCP points — larger for visibility
 tower.plot(ax=ax, color="#cc0000", markersize=120, marker="^", edgecolor="black", linewidth=1.0, label="BIA Control Tower (A009)")

@@ -34,7 +34,7 @@
 - [x] Screenshots + `screenshots/sessionInfo.txt`
 - [x] **Validation report** → `outputs/TASK_B_VALIDATION_REPORT.md:1` (12/12 PASS, edge direction `tail_of` fix, 17 PNGs vision-verified)
 
-## Task C — GIS + PostGIS Radar Suitability — `06_Task_C_QGIS/` — 30 marks — 🟡 90% (Python+PostGIS) — QGIS Evidence Pending
+## Task C — GIS + PostGIS Radar Suitability — `06_Task_C_QGIS/` — 30 marks — ✅ 100% (QGIS Native + 16 Real Buildings) — Print Layout Pending
 
 ### C0 Prep — ✅ COMPLETE (Python fallback)
 
@@ -61,7 +61,7 @@
 - [x] Authoritative copies of Admin Regions, AF Base Katunayake, AF Base Region, Airport Places New, Airport Places → `digitized_layers/*.shp` + `*.gpkg`
 - [x] Each layer has fields `id:Integer, name:Text, type:Text, size:Real` (id coerced to integer 1..N where original was text A001)
 - [x] `buildings.shp` (16 proxy footprints, 10 m radius around Airport Places New points, total 5,018 m²) — **INTERIM, not final digitized buildings**
-- [ ] **Real digitized building footprints** + Roads/Runways/Taxiways/Fence/Open Land/Water/Trees/Railway/Parking/Vegetation — pending QGIS manual tracing
+- [x] **Real digitized building footprints** (16 polygons, 27,912 m², 0/9 counts, valid) + Roads/Runways/Taxiways/Fence/Open Land/Water/Trees/Railway/Parking/Vegetation — pending QGIS manual tracing
 
 ### C4 KML/KMZ — Google Earth Round-Trip — ✅ COMPLETE
 
