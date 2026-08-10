@@ -1,30 +1,39 @@
-# buildings_real.gpkg — Manual Digitization Layer for Task C
+# buildings_real.gpkg — Real Building Footprints for Task C
 
-**Purpose:** Replace the interim `buildings` proxy (16×10 m circles, 5,018 m²) with real building footprints traced from the aerial raster.
+**Purpose:** Replace the interim `buildings` proxy (16×10 m circles, 5,018 m²) with real building footprints extracted from the aerial raster.
+
+**Method:** Seed-based raster extraction
+- Used 16 known building locations from proxy KML as seeds
+- For each seed, extracted bright roof pixels from raster within 80m radius
+- Applied adaptive thresholding, morphological cleaning, and polygonization
+- Filtered by area (100–15,000 m²), rectangularity, and brightness
+- Classified as Terminal/Hangar/Warehouse/Tower/Barracks based on name and area
+
+**Results:**
+- 16 buildings extracted (same count as proxy, but real shapes)
+- Total area: 27,911.7 m² (vs 5,018.5 m² proxy = +456% increase)
+- Range: 148 m² (Smoke Room) to 5,831 m² (Arrival Terminal)
 
 **Schema (required by guide, do not change):**
 - `id` : Integer — sequential 1..N
-- `name` : Text — building name/ID (e.g., "Terminal 1", "Hangar A", or auto "Building 1")
-- `type` : Text — e.g., "Terminal", "Hangar", "Warehouse", "Control Tower Annex" (not the tower itself — tower is separate point)
-- `size` : Real — footprint area in m², calculated via Field Calculator: `size = $area` (after digitizing, run Field Calculator to populate)
-- `geometry` : Polygon — traced footprint, CRS EPSG:5234
+- `name` : Text — building name/ID
+- `type` : Text — Terminal, Hangar, Warehouse, Tower, Barracks, Building
+- `size` : Real — footprint area in m²
+- `geometry` : Polygon — extracted footprint, CRS EPSG:5234
 
-**How to digitize in QGIS (while QGIS is open):**
-1. In QGIS, Layer → Add Layer → Add Vector Layer → select `digitized_layers/buildings_real.gpkg` (EPSG:5234)
-2. Right-click layer → Toggle Editing → Add Polygon Feature
-3. Zoom to aerial raster `georeferenced_raster/BIA_georeferenced_EPSG5234.tif` — trace ~10-15 visible building polygons (terminal buildings, hangars, warehouses near runway/apron). Avoid tracing shadows, aircraft, roads, vegetation — only roof footprints.
-4. For each polygon, fill Attributes: id (1,2,3...), name (e.g., "Building 1"), type (e.g., "Terminal"), size will be auto-calculated next step
-5. After tracing all, open Attribute Table → Toggle Editing → Field Calculator → Update existing field `size` → Expression: `$area` → OK → Save
-6. Project → Save As `qgis_project/BIA_Radar.qgz` (overwrite placeholder 692B file)
-7. Then replace proxy in PostGIS: In QGIS DB Manager or via `ogr2ogr -f PostgreSQL PG:"dbname=SL_BIA_Aerial_Info" digitized_layers/buildings_real.gpkg -nln buildings -overwrite -a_srs EPSG:5234` or via `qgis_process`
-8. Rerun PostGIS queries:
-   ```
-   SELECT COUNT(*) FROM buildings WHERE ST_Intersects(wkb_geometry, (SELECT geom FROM smr_suitable));
-   SELECT SUM(ST_Area(wkb_geometry)) FROM buildings WHERE ST_Intersects(wkb_geometry, (SELECT geom FROM smr_suitable));
-   SELECT COUNT(*) FROM buildings WHERE ST_Intersects(wkb_geometry, (SELECT geom FROM psr_2km_within_slaf));
-   ```
-   Update `postgis_exports/area_calculations.csv` and `building_counts.csv` with real values.
+**PostGIS Results:**
+- Buildings in SMR suitable: 0
+- Buildings in PSR 2km within SLAF: 9
+- Building area in PSR 2km: 7,769.3 m²
+- Available land SMR: 17,416.6 m²
+- Available land PSR 2km: 3,803,603.1 m²
 
-**For now:** This file is empty (0 rows) and ready. The proxy `buildings.shp` (16×10 m) remains in PostGIS as `buildings` until you replace it — do not use proxy numbers in final report.
+**Files:**
+- `buildings_real.gpkg` — GeoPackage with 16 building polygons
+- `scripts/extract_buildings_seed.py` — Extraction script
+- `outputs/building_mask_raster.tif` — Brightness mask for documentation
 
-**QGIS project ready:** `qgis_project/BIA_Radar.qgz` already contains CRS EPSG:5234, but will be overwritten with full layers after you digitize.
+**Confidence notes:**
+- Most extractions have medium confidence (within 40m of seed)
+- Low-confidence fallbacks: ID 1 (Smoke Room), ID 9 (C242 Bilate)
+- Manual review recommended for critical analysis
