@@ -17,7 +17,7 @@
 - [x] Model comparison (Adj R², AIC, F, p) → `outputs/model_comparison.csv` + `tables/model_comparison.csv`
 - [x] Interpretation paragraph + business implications → `outputs/TASK_A_FINDINGS.md:1`
 - [x] Screenshots + `screenshots/sessionInfo.txt` (R 4.5.2, tidyverse 2.0.0, car 3.1-5, psych 2.6.5)
-- [x] **Validation report** → `outputs/TASK_A_VALIDATION_REPORT.md:1` (10/10 PASS, 34 PNGs verified via Pillow)
+- [x] **Validation report** → `outputs/TASK_A_VALIDATION_REPORT.md:1` (10/10 PASS, 41 PNGs verified via Pillow)
 
 ## Task B — Network Analysis (R) — `05_Task_B_Network_Analysis/` — 20 marks — ✅ COMPLETE
 
@@ -100,7 +100,7 @@
 
 ## Cross-Cutting
 
-- [x] Screenshots for every major step saved per task `screenshots/` (Task A 34 PNGs, Task B 17 PNGs, Task C 5 PNGs + interim map)
+- [x] Screenshots for every major step saved per task `screenshots/` (Task A 41 PNGs, Task B 17 PNGs, Task C 5 PNGs + interim map)
 - [x] All commands logged in `12_AGENT_LOGS/commands_used.md`
 - [ ] Harvard references collected in `00_READ_ME/references.bib` or `.md` (pending Task C QGIS final)
 - [ ] Report/presentation draft distinguishes Methodology / Results / Discussion / Recommendations and cites actual generated files

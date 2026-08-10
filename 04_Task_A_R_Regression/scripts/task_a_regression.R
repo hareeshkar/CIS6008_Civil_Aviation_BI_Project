@@ -3,9 +3,26 @@
 # Steps in order: load → inspect → descriptive → normality → correlation → scatterplots → simple → multiple → assumptions → export
 # TRACEABILITY: every numeric output written to files; do not invent values.
 
-# --- renv activation (project-local) ---
-if (file.exists("renv/activate.R")) source("renv/activate.R")
-if (file.exists("../.venv/bin/python")) Sys.setenv(RETICULATE_PYTHON = "../.venv/bin/python")
+# --- paths ---
+file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+if (length(file_arg) == 1L) {
+  base_dir <- dirname(dirname(normalizePath(sub("^--file=", "", file_arg))))
+} else if (dir.exists(file.path(getwd(), "outputs"))) {
+  base_dir <- normalizePath(getwd())
+} else {
+  base_dir <- normalizePath(file.path(getwd(), "04_Task_A_R_Regression"))
+}
+if (!dir.exists(file.path(base_dir, "outputs"))) stop("Task A directory not found: ", base_dir)
+
+# --- renv activation (project-local, independent of current working directory) ---
+renv_activate <- file.path(base_dir, "renv", "activate.R")
+if (file.exists(renv_activate)) {
+  # renv resolves its project from the working directory, not the source path.
+  setwd(base_dir)
+  source(renv_activate)
+}
+python_path <- file.path(dirname(base_dir), ".venv", "bin", "python")
+if (file.exists(python_path)) Sys.setenv(RETICULATE_PYTHON = python_path)
 
 # --- libraries (all pre-installed and renv-tracked) ---
 suppressPackageStartupMessages({
@@ -18,20 +35,8 @@ suppressPackageStartupMessages({
 })
 options(scipen = 999)  # 100% safe: never 4e+04, always 40,000
 
-# --- paths ---
-base_dir <- "/Users/hareeshkar/Documents/CIS6008_Civil_Aviation_BI_Project/04_Task_A_R_Regression"
-if (!dir.exists(file.path(base_dir, "outputs"))) {
-  # fallback: try cwd relative
-  candidates <- c(
-    "04_Task_A_R_Regression",
-    file.path(getwd(), "04_Task_A_R_Regression"),
-    getwd()
-  )
-  for (c in candidates) if (dir.exists(file.path(c, "outputs"))) { base_dir <- normalizePath(c); break }
-}
-base_dir <- normalizePath(base_dir)
 cat("Base dir:", base_dir, "\n")
-src_csv <- "/Users/hareeshkar/Documents/CIS6008_Civil_Aviation_BI_Project/03_Original_Datasets/Task_A/Air_Transport_Data.csv"
+src_csv <- file.path(dirname(base_dir), "03_Original_Datasets", "Task_A", "Air_Transport_Data.csv")
 working_dir <- file.path(base_dir, "working_data")
 outputs_dir <- file.path(base_dir, "outputs")
 plots_dir <- file.path(base_dir, "plots")
@@ -45,14 +50,17 @@ dir.create(tables_dir, showWarnings = FALSE, recursive = TRUE)
 
 # --- 1. Load (copy-before-transform) ---
 cat("[1] Loading Air_Transport_Data.csv\n")
+csv_path <- file.path(working_dir, "Air_Transport_Data.csv")
 if (file.exists(src_csv)) {
-  file.copy(src_csv, file.path(working_dir, "Air_Transport_Data.csv"), overwrite = TRUE)
+  # The protected master is mode 0444; make the derived working copy replaceable.
+  if (file.exists(csv_path)) Sys.chmod(csv_path, mode = "0644")
+  copied <- file.copy(src_csv, csv_path, overwrite = TRUE)
+  if (!copied) stop("Could not copy source CSV to: ", csv_path)
+  Sys.chmod(csv_path, mode = "0644")
   cat("  Copied master -> working_data/Air_Transport_Data.csv\n")
 } else {
   stop("Source CSV not found: ", src_csv)
 }
-csv_path <- file.path(working_dir, "Air_Transport_Data.csv")
-if (!file.exists(csv_path)) csv_path <- src_csv
 df <- read_csv(csv_path, show_col_types = FALSE)
 cat("  Rows:", nrow(df), "Cols:", ncol(df), "\n")
 print(glimpse(df))
@@ -167,7 +175,7 @@ for (v in expected) {
 # Combined QQ grid
 qq_grid_file <- file.path(plots_dir, "qq_all_variables.png")
 png(qq_grid_file, width = 1800, height = 1400, res = 200)
-par(mfrow = c(3,3), mar = c(4,4,2,1))
+par(mfrow = c(2,4), mar = c(4,4,2,1))
 for (v in expected) {
   qqnorm(df[[v]], main = paste0("Q-Q: ", v), pch = 19, cex = 0.6, col = "#2C73D2")
   qqline(df[[v]], col = "red", lwd = 2)

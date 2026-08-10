@@ -1,7 +1,7 @@
 # Task A Validation Report — Against Assignment (Excellent Band)
 
 > **Validation date:** 2026-08-09 18:47 Asia/Colombo  
-> **Script:** `04_Task_A_R_Regression/scripts/task_a_regression.R:1` (386 lines, 10 ordered steps)  
+> **Script:** `04_Task_A_R_Regression/scripts/task_a_regression.R:1` (10 ordered steps; portable paths and project-local `renv`)  
 > **Data:** `03_Original_Datasets/Task_A/Air_Transport_Data.csv` (200 rows × 7 cols, copy → `working_data/Air_Transport_Data.csv:1`)  
 > **Run:** `Rscript 04_Task_A_R_Regression/scripts/task_a_regression.R` — exit 0, Base dir logged  
 > **Toolchain:** `R 4.5.2`, `tidyverse 2.0.0 car 3.1-5 lmtest 0.9-40 corrplot 0.95 psych 2.6.5 ggplot2 4.0.1` (`screenshots/sessionInfo.txt:1`)
@@ -66,7 +66,7 @@ No re-estimation; validation is read-only audit of frozen outputs.
 - **vif_values.csv / top_influential_points.csv (7 / 16 lines):** VIFs confirm; top 15 cooks 0.021–0.062, hats 0.023–0.101, std resid max 2.81 — leverage modest.
 - **TASK_A_FINDINGS.md (119 lines):** Correctly reports r, p, R², CIs, VIF/BP/DW, flags negative DV minimum and positive fuel artefact, gives BIA recommendations (use traffic for ops scaling, enrich data before forecasting) — no fabrication; all numbers traceable.
 
-### 4b. Plots (34 PNGs) — Every Image Analysed
+### 4b. Plots (41 PNGs) — Every Image Analysed
 
 All PNGs verified readable via Pillow/PNG header, dimensions and file sizes below are **evidence of successful render** (not white/blank):
 
@@ -102,7 +102,7 @@ All PNGs verified readable via Pillow/PNG header, dimensions and file sizes belo
 | `residuals_vs_leverage.png` | 2100×1500 | 243.8 KB | hat vs std resid, size Cook's D, max hat 0.10, Cook 0.062 — no high-leverage distortion | **PASS** |
 | `scatter_*` aliases (6 duplicates) | 2100×1500 | same as above | Identical to `passenger_demand_vs_*` for checklist alias | **PASS** duplicates intentional |
 
-**Image integrity:** All 34 PNGs open without error, dimensions ≥1800×1350 (≥300 dpi at ~6–7 inch print), sizes 70–413 KB (not blank). No corruption, no 1-pixel images, no Pillow load errors.
+**Image integrity:** All 41 PNGs open without error, dimensions ≥1800×1350 (≥300 dpi at ~6–7 inch print), sizes 70–413 KB (not blank). No corruption, no 1-pixel images, no Pillow load errors.
 
 ### 4c. Screenshots / Environment
 
@@ -147,7 +147,16 @@ Spot recomputation via `.venv/bin/python duckdb` against raw CSV confirms:
 
 ## 8. Verdict
 
-**Task A is PASS at Excellent band** — 10/10 assignment elements present, statistics reproducible, 34/34 images intact and correctly rendered, traceability complete, low explanatory power honestly disclosed. With the two cosmetic fixes applied and sessionInfo evidence now present, the sub-region (Task A) is **ready to be inherited as the template for Tasks B/C** (same `renv`/copy-before-transform/tables+plots+screenshots pattern).
+**Task A is PASS at Excellent band** — 10/10 assignment elements present, statistics reproducible, 41/41 images intact and correctly rendered, traceability complete, low explanatory power honestly disclosed. With the two cosmetic fixes applied and sessionInfo evidence now present, the sub-region (Task A) is **ready to be inherited as the template for Tasks B/C** (same `renv`/copy-before-transform/tables+plots+screenshots pattern).
 
-*Validator: explore-deepseek subagent + main python image audit + manual R re-read. Files checksummed 2026-08-09. Next: proceed to Task B using same scaffolding.*
+*Validator: explore-deepseek subagent + main python image audit + manual R re-read. Files checksummed 2026-08-09. Reproducibility confirmation added below.*
 
+---
+
+## 9. 2026-08-10 Reproducibility Confirmation
+
+- The script now derives its Task A directory from `--file`, locates the source CSV relative to the repository root, and contains no machine-specific `/Users/...` paths.
+- It calls `setwd(base_dir)` before sourcing `renv/activate.R`; `renv.lock` now records 141 packages, including `tidyverse 2.0.0`, `car 3.1-5`, `lmtest 0.9-40`, `corrplot 0.95`, `psych 2.6.5`, and `ggplot2 4.0.3`.
+- A repository-root run completed without warnings. The script makes its derived working CSV writable before replacement and after copying, while SHA-256 confirms it remains identical to the protected master source.
+- `renv::status()` reports no issues. `screenshots/sessionInfo.txt` records attached-package versions matching the lockfile.
+- Max-effort audit `ses_014b65cd7ffec5DJuZJ9DiZV0B` verified all 41 PNGs and recomputed the reported statistics. Confirmation audit `ses_014a38e21ffesGVGEvk49QjmhO` verified the portable environment and copy behavior. Final audit `ses_0149c648affe06PTXLXWW6Y5Pe` confirmed the corrected session metadata and all current 41-PNG references.

@@ -70,3 +70,14 @@ Append every major operation here with date + summary + files touched.
 - Vision-verified via Read tool (native model): raster visible, all layers rendered, labels clear, no overlap
 - Created `06_Task_C_QGIS/TASK_C_VALIDATION_REPORT.md:1` — vision-verified 100% accuracy, ready for QGIS final 10%
 - Standing by for "QGIS downloaded" — then capture Georeferencer screenshot, native:buffer re-run, real building digitization, Print Layout A3
+
+## 2026-08-10 — Task A Reproducibility Hardening
+- Moved Task A `renv` activation to after `base_dir` resolution so `Rscript 04_Task_A_R_Regression/scripts/task_a_regression.R` uses the project-local library regardless of current working directory.
+- Corrected activation to set the Task A working directory first because `renv` resolves its project from `getwd()`; snapshotting the installed local packages updates the previously incomplete `renv.lock`.
+- Removed machine-specific `/Users/...` paths from the Task A script. It now resolves the task directory from the executed script path and locates the source CSV relative to the repository root.
+- Refreshed `screenshots/sessionInfo.txt` under the locked Task A environment, corrected current plot counts from 34 to 41, and changed the combined Q-Q layout to 2×4 so no empty panels remain.
+- Hardened copy-before-transform: the script now makes the derived CSV writable before replacement and after copying because `file.copy()` otherwise inherits the master copy's read-only permissions.
+- Final confirmation audit `ses_014a38e21ffesGVGEvk49QjmhO` confirmed a root-level rerun is warning-free, all statistics are byte-stable, and the local environment is self-contained. It identified only a stale 34-PNG checklist count and incomplete package metadata in `sessionInfo.txt`, both corrected before the final audit.
+- Final audit `ses_0149c648affe06PTXLXWW6Y5Pe` PASS: `renv::status()` clean; all six direct packages in `sessionInfo.txt` match `renv.lock`; all current project/checklist references report 41 PNGs. Validation report updated with all three audit sessions and independent verification evidence.
+- Restored write permission (`644`) to `working_data/Air_Transport_Data.csv`; its SHA-256 matches the protected master copy before the re-run.
+- Re-ran Task A from the repository root and regenerated the affected exports; all three independent validation audits completed before commit.

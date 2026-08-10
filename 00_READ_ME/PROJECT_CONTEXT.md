@@ -12,7 +12,7 @@ Module: `CIS6008 Analytics and Business Intelligence`, Semester 2 2026, Leader `
 
 | Task | Marks | Status | Evidence |
 |---|---|---|---|
-| **A — Regression** | 30 | ✅ **COMPLETE** | `04_Task_A_R_Regression/outputs/TASK_A_VALIDATION_REPORT.md:1` (10/10 PASS, 34 PNGs vision-verified) + `TASK_A_FINDINGS.md:1` |
+| **A — Regression** | 30 | ✅ **COMPLETE** | `04_Task_A_R_Regression/outputs/TASK_A_VALIDATION_REPORT.md:1` (10/10 PASS, 41 PNGs verified) + `TASK_A_FINDINGS.md:1` |
 | **B — Network** | 20 | ✅ **COMPLETE** | `05_Task_B_Network_Analysis/outputs/TASK_B_VALIDATION_REPORT.md:1` (12/12 PASS, 17 PNGs vision-verified, edge direction fix) + `TASK_B_FINDINGS.md:1` |
 | **C — GIS** | 30 | 🟡 **90% (Python+PostGIS)** | `06_Task_C_QGIS/TASK_C_STATUS.md:1` — 100% numeric verified, QGIS-native evidence pending QGIS download |
 | **D — Power BI** | 20 | ❌ **SKIPPED (Mac)** | `07_Task_D_PowerBI_SKIPPED/` (empty — task D scoped to Windows) |

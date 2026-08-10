@@ -45,3 +45,12 @@ CSV row counts (venv duckdb): Task_A Air_Transport_Data.csv 200 rows, Task_B SNA
 # Buildings = 16x10m proxy (interim, 0/9/9/0 counts, 5018 m²)
 # Georeference: 6 GCPs documented, TPS+Cubic, RMSE <1px pending QGIS screenshot
 ```
+
+## 2026-08-10 — Task A Reproducibility Verification
+```bash
+chmod 644 "04_Task_A_R_Regression/working_data/Air_Transport_Data.csv"
+Rscript -e "renv::snapshot(prompt = FALSE)"
+Rscript 04_Task_A_R_Regression/scripts/task_a_regression.R
+Rscript -e "suppressPackageStartupMessages({library(tidyverse); library(car); library(lmtest); library(corrplot); library(psych); library(ggplot2)}); writeLines(capture.output(sessionInfo()), 'screenshots/sessionInfo.txt')"
+shasum -a 256 "03_Original_Datasets/Task_A/Air_Transport_Data.csv" "04_Task_A_R_Regression/working_data/Air_Transport_Data.csv"
+```
