@@ -196,7 +196,7 @@ Cite these exact paths (Excellent evidence):
 * **Communities:** `metrics/communities.csv:1`, `community_stats.txt:1`
 * **Net overview:** `outputs/graph_summary.txt:1`, `metrics/network_level_metrics.txt:1`, `outputs/vulnerability.md:1`, `vulnerability_joint.csv`
 * **Edgelist & Graph:** `metrics/edgelist.csv`, `outputs/graph.graphml` (7.9K, **directed**) + `graph.gml` (4.4K) + `graph_raw.rds` (directed object) — note graph is directed, projection is `g_und` in memory
-* **Visuals (14 PNGs, all ≥2400×1500 (network maps ≥2600×2000, rank plots ≥2400×1800)):** `graphs/network_fruchterman.png:1` (directed FR), `network_kamada.png`, `network_circle.png`, `network_louvain.png` (Louvain on `g_und`), `network_betweenness.png` (directed betweenness size), `network_ggraph_fr.png`, `degree_distribution.png`, `rank_degree_total.png`, `rank_betweenness.png`, `rank_eigenvector.png`, `rank_pagerank.png`, `rank_strength_total.png`
+* **Visuals (16 current PNGs, all ≥2400×1500):** `graphs/network_fruchterman.png:1` (directed FR), `network_kamada.png`, `network_circle.png`, `network_louvain.png` (Louvain on `g_und`), `network_betweenness.png` (directed betweenness size), `network_ggraph_fr.png`, `degree_distribution.png`, `rank_degree_total.png`, `rank_betweenness.png`, `rank_eigenvector.png`, `rank_pagerank.png`, `rank_strength_total.png`. `network_graph.png` was removed as a redundant FR alias.
 * **This summary:** `outputs/TASK_B_FINDINGS.md` (this file)
 
 ---

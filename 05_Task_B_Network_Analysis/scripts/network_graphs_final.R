@@ -1,6 +1,18 @@
 #!/usr/bin/env Rscript
 # Task B — Enhanced v2: Professional-grade network visuals (Okabe-Ito, viridis, theme_graph)
 # Context7 insights: use colorblind-friendly Okabe-Ito, perceptually uniform viridis, minimal theme_graph, ggrepel
+file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+if (length(file_arg) == 1L) {
+  base_dir <- dirname(dirname(normalizePath(sub("^--file=", "", file_arg))))
+} else if (dir.exists(file.path(getwd(), "outputs"))) {
+  base_dir <- normalizePath(getwd())
+} else {
+  base_dir <- normalizePath(file.path(getwd(), "05_Task_B_Network_Analysis"))
+}
+if (!dir.exists(file.path(base_dir, "outputs"))) stop("Task B directory not found: ", base_dir)
+setwd(base_dir)
+if (file.exists("renv/activate.R")) source("renv/activate.R")
+
 suppressPackageStartupMessages({
   library(tidyverse)
   library(igraph)
@@ -9,7 +21,6 @@ suppressPackageStartupMessages({
   library(scales)
 })
 
-base_dir <- "/Users/hareeshkar/Documents/CIS6008_Civil_Aviation_BI_Project/05_Task_B_Network_Analysis"
 g <- readRDS(file.path(base_dir, "outputs/graph_raw.rds"))
 cent <- read_csv(file.path(base_dir, "metrics/node_centrality.csv"), show_col_types=FALSE)
 comm <- read_csv(file.path(base_dir, "metrics/communities.csv"), show_col_types=FALSE)
@@ -117,6 +128,7 @@ save_p(p1, file.path(base_dir, "graphs/network_fruchterman.png"))
 file.copy(file.path(base_dir, "graphs/network_fruchterman.png"), file.path(base_dir, "graphs/network_graph.png"), overwrite=TRUE)
 file.copy(file.path(base_dir, "graphs/network_fruchterman.png"), file.path(base_dir, "graphs/network_louvain.png"), overwrite=TRUE)
 file.copy(file.path(base_dir, "graphs/network_fruchterman.png"), file.path(base_dir, "graphs/network_ggraph_fr.png"), overwrite=TRUE)
+file.remove(file.path(base_dir, "graphs/network_graph.png"))
 
 # 2) Betweenness — bottleneck view, viridis sequential, not Okabe (continuous)
 p2 <- ggraph(tg, layout="fr", weights=Weight) +
@@ -176,7 +188,8 @@ deg_df <- cent %>% select(node, degree_total) %>% count(degree_total, name="n") 
 p5 <- ggplot(cent, aes(x=degree_total)) +
   geom_histogram(binwidth=1, fill="#2C73D2", colour="white", linewidth=0.6, boundary=0, alpha=0.92) +
   geom_text(data=deg_df, aes(x=degree_total, y=n, label=n), vjust=-0.7, size=3.4, fontface="bold", family="Helvetica") +
-  scale_x_continuous(breaks=1:7, limits=c(0.5,7.5)) +
+  scale_x_continuous(breaks=1:7) +
+  coord_cartesian(xlim=c(0.5,7.5)) +
   scale_y_continuous(expand=expansion(mult=c(0,0.18))) +
   labs(title="Degree Distribution — Concentrated Leadership",
        subtitle="15 nodes · Mean degree 3.7 · Only Cargo (7) and Customs (6) exceed 5 · Long tail of peripheral actors (AASL, Ground Handling deg 1)",
@@ -204,7 +217,7 @@ for (metric in c("degree_total","betweenness","eigenvector","pagerank","strength
   p <- ggplot(dfp, aes(x=.data[[metric]], y=short, fill=.data[[metric]])) +
     geom_col(width=0.62, show.legend=FALSE) +
     geom_text(aes(label=round(.data[[metric]],2)), hjust=-0.08, size=3, fontface="bold", family="Helvetica") +
-    scale_fill_viridis_c(option="Blues", begin=0.35, end=0.92, guide="none") +
+    scale_fill_viridis_c(option="E", begin=0.35, end=0.92, guide="none") +
     labs(title=paste0("Ranked — ", metric),
          subtitle=ifelse(metric=="betweenness","Fuel Supply 12.0 is the critical bridge · Cargo 0 sits on no paths (sink)",
                   ifelse(metric=="degree_total","Cargo 7 leads · 2 nodes degree 1 (periphery)",

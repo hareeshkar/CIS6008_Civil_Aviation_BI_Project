@@ -27,12 +27,12 @@
 - [x] Metrics CSV: degree (in/out/total/weighted), betweenness, closeness, eigenvector, PageRank, hub/authority → `metrics/node_centrality.csv` (15 nodes × 13 metrics)
 - [x] Top 3 hubs (Cargo 7/35, Customs 6/32, Fuel 5/32) + top 3 bridges (Fuel 12, Customs 11, ATC 6) identified with values
 - [x] Communities: Louvain 4 clusters mod 0.331 → `metrics/communities.csv` + `graphs/network_louvain.png` (also Walktrap, FastGreedy for stability)
-- [x] Layout exports: Fruchterman-Reingold + Kamada-Kawai + Circular + Ggraph → `graphs/network_*.png` (17 PNGs, 2400-4352 px, Okabe-Ito)
+- [x] Layout exports: Fruchterman-Reingold + Kamada-Kawai + Circular + Ggraph → `graphs/network_*.png` (16 PNGs, 2400-4352 px, Okabe-Ito)
 - [x] Vulnerability: articulation points (Cargo, Fuel), bridges, what-if removal of BIA/Cargo → `outputs/vulnerability.md:1` + `vulnerability_joint.csv`
 - [x] Resilience recommendations (Cargo redundancy, Fuel hardening, Customs digitization, MRIA reserve)
 - [x] Export `outputs/graph.graphml` (8.1K) + `outputs/graph.gml` (4.5K) + `outputs/TASK_B_FINDINGS.md`
 - [x] Screenshots + `screenshots/sessionInfo.txt`
-- [x] **Validation report** → `outputs/TASK_B_VALIDATION_REPORT.md:1` (12/12 PASS, edge direction `tail_of` fix, 17 PNGs vision-verified)
+- [x] **Validation report** → `outputs/TASK_B_VALIDATION_REPORT.md:1` (12/12 PASS, edge direction `tail_of` fix, 16 PNGs verified)
 
 ## Task C — GIS + PostGIS Radar Suitability — `06_Task_C_QGIS/` — 30 marks — ✅ 100% (QGIS Native + 16 Real Buildings) — Print Layout Pending
 
@@ -100,7 +100,7 @@
 
 ## Cross-Cutting
 
-- [x] Screenshots for every major step saved per task `screenshots/` (Task A 41 PNGs, Task B 17 PNGs, Task C 5 PNGs + interim map)
+- [x] Screenshots for every major step saved per task `screenshots/` (Task A 41 PNGs, Task B 16 PNGs, Task C 5 PNGs + interim map)
 - [x] All commands logged in `12_AGENT_LOGS/commands_used.md`
 - [ ] Harvard references collected in `00_READ_ME/references.bib` or `.md` (pending Task C QGIS final)
 - [ ] Report/presentation draft distinguishes Methodology / Results / Discussion / Recommendations and cites actual generated files

@@ -54,7 +54,7 @@ Task B is **Sub-Region 2** (after Task A Sub-Region 1). No data resampling; mode
 | 8 | Vulnerabilities (articulation, bridges, what-if) | `outputs/vulnerability.md:1` (art points Cargo/Fuel, bridges 2, table BIA/CAASL/Cargo/Customs removals) + `vulnerability_*.csv` | **PASS** (direction fixed) |
 | 9 | Resilience recommendations | `TASK_B_FINDINGS.md:1` §6 (6 evidence-backed: protect Cargo, harden Fuel, weaken Customs/ATC, connect CAASL, MRIA reserve, PageRank sinks) | **PASS** |
 |10 | Export GraphML (+ GML) | `outputs/graph.graphml:1` 7.9K + `graph.gml` 4.4K (valid), `edgelist.csv` | **PASS** after python fix |
-|11 | Visuals (FR/KK/layouts, community, ranks) | 17 PNGs `graphs/network_*.png` (all upgraded to 4160px enhanced quality) + `centrality_dashboard.png` + `vulnerability_storyboard.png` + ranks (see §4) | **PASS** (upgraded in place) |
+|11 | Visuals (FR/KK/layouts, community, ranks) | 16 PNGs in `graphs/`, including FR, KK, circle, betweenness, ranking, dashboard and resilience views (see §4) | **PASS** |
 |12 | Traceability / no fabrication / screenshots | `screenshots/sessionInfo.txt:1`, `terminal_run_log_2026-08-09.txt`, every number cites `metrics/*` | **PASS** |
 
 **Overall:** 12/12 **PASS** — Excellent band satisfied after 3 non-statistical fixes (edge direction, FINDINGS wording, GML).
@@ -75,11 +75,11 @@ Task B is **Sub-Region 2** (after Task A Sub-Region 1). No data resampling; mode
 
 ### Graphs — Every PNG (Pillow 12.3.0, dimensions, size, qualitative)
 
-All 15 base + 6 enhanced opened without corruption, RGB/RGBA, ≥2400px.
+All 16 current PNGs opened without corruption, RGB/RGBA, ≥2400px.
 
 | Image | Dimensions | Size | What It Shows — Qualitative |
 |---|---|---|---|
-| **network_fruchterman.png** (alias `network_graph.png`) | 2600×2000 | 423KB | FR layout, community colours (4 Louvain), node size degree_total, edge width Weight, arrow 0.45, legend Relationship. Communities separated cleanly, BIA top-left, Cargo centre-right sink. **PASS** — primary overview. |
+| **network_fruchterman.png** | 2600×2000 | 423KB | FR layout, community colours (4 Louvain), node size degree_total, edge width Weight, arrow 0.45, legend Relationship. Communities separated cleanly, BIA top-left, Cargo centre-right sink. **PASS** — primary overview. |
 | **network_kamada.png** (`network_kk.png`) | 2600×2000 | 414KB | KK layout (distance=10-Weight), tighter, fuel central, ATC overlaid. Diff from FR confirms layout independence. **PASS** |
 | **network_circle.png** | 2600×2000 | 608KB | Circular, equal angular spacing — hub spikes (Cargo 7) visually obvious by label density. **PASS** for hub reading. |
 | **network_louvain.png** | 2600×2000 | 413KB | Same FR coords but title explicitly "Louvain 4 clusters mod0.331" — colours identical to FR but emphasis. **PASS** |
@@ -99,7 +99,7 @@ All 15 base + 6 enhanced opened without corruption, RGB/RGBA, ≥2400px.
 | **centrality_dashboard_enhanced.png** | 4160×2560 | 288KB | **ENHANCED:** facet 5 metrics (degree/betweenness/closeness/pagerank/strength) at glance, values labelled. **PASS enhanced** |
 | **vulnerability_storyboard.png** | 4160×2080 | 231KB | **ENHANCED:** bar edges left vs weak comps, Cargo fragmentation 2 comps annotated. Storytelling. **PASS enhanced** |
 
-- **Integrity:** 17 PNGs total (15 base/corrected + 6 enhanced), all ≥2400px wide, 38–822KB (not blank), RGB/RGBA, Pillow `load()` OK.
+- **Integrity:** 16 PNGs total, all ≥2400px wide, RGB/RGBA, Pillow `load()` OK. The redundant legacy `network_graph.png` alias is intentionally absent.
 - **User-friendly wins:** short labels (BIA, MRIA, CAASL), community colours distinct, betweenness magma heat, dashboard faceting, storyboard for resilience — addresses sub-agent note "rank plots strong #2C73D2" and elevates to presentation-ready.
 
 ### Screenshots
@@ -129,9 +129,19 @@ Sub-agent `explore-deepseek-v4-flash` (high) was treated per updated `AGENTS.md:
 
 ## 7. Verdict
 
-**Task B is PASS at Excellent band** — 15-node/28-edge directed weighted graph correctly built, all centralities (degree/strength, betweenness, PageRank) computed with proper weight/distance handling, Louvain 4 communities mod0.331, connectivity (density 0.133, transitivity 0.278) and vulnerability (2 articulation points, 2 bridges, Cargo fragmentation) fully evidenced, 17 PNGs (15 base + 6 enhanced) intact and presentation-grade, 12/12 checklist items satisfied after fixes, no fabrication.
+**Task B is PASS at Excellent band** — 15-node/28-edge directed weighted graph correctly built, all centralities (degree/strength, betweenness, PageRank) computed with proper weight/distance handling, Louvain 4 communities mod0.331, connectivity (density 0.133, transitivity 0.278) and vulnerability (2 articulation points, 2 bridges, Cargo fragmentation) fully evidenced, 16 current PNGs intact and presentation-grade, 12/12 checklist items satisfied after fixes, no fabrication.
 
 Task B outputs are now the **inheritance template** for Task C (same `renv`/copy-before-transform/GraphML+GML/metrics+graphs+screenshots+validation pattern, with sub-agent max-effort audit).
 
-*Validator: main agent (python duckdb + R igraph recompute + Pillow) + sub-agent `ses_0194dd4a` (high) as critic. Files checksummed 2026-08-09. Next: Task C GIS (sub-agent max-effort per AGENTS.md:10.2).*
+*Validator: main agent (python duckdb + R igraph recompute + Pillow) + sub-agent `ses_0194dd4a` (high) as critic. Files checksummed 2026-08-09. Reproducibility confirmation added below.*
 
+---
+
+## 8. 2026-08-10 Reproducibility and Visual-Cleanup Confirmation
+
+- `task_b_network.R` now resolves its Task B directory from `--file`, uses project-local `renv`, and has no machine-specific paths. Its working CSV remains writable and SHA-256-identical to the protected master copy after each re-run.
+- `renv.lock` records the required analysis packages (`tidyverse 2.0.0`, `igraph 2.3.3`, `tidygraph 1.3.1`, `ggraph 2.2.2`, `scales 1.4.0`); `renv::status()` reports no issues and `screenshots/sessionInfo.txt` records the same attached versions.
+- The GML writer is now self-contained R code, avoiding the previous platform-specific igraph failure. Both GML and GraphML reopen with 15 nodes and 28 directed edges.
+- At the user's direction, only `network_graph.png` was removed because it was a byte-for-byte legacy alias. All graph-generation code and all other visual outputs remain; 16 current PNGs are retained.
+- Max-effort audit `ses_014348e34ffeJJvQqyH7TA9RQ0` independently recomputed the metrics, inspected all current PNGs, and confirmed the portability, valid graph exports and intentional alias removal.
+- Final max-effort audit `ses_014254e30ffeT1Uz5BnqYYvb59` PASS: all three scripts run from the repository root with the locked environment; the 16 retained PNGs remain; `network_graph.png` stays absent; GML and GraphML reopen warning-free as directed 15-node/28-edge graphs; all current documentation consistently states the intentional removal.

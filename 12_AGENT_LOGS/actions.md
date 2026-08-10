@@ -79,5 +79,12 @@ Append every major operation here with date + summary + files touched.
 - Hardened copy-before-transform: the script now makes the derived CSV writable before replacement and after copying because `file.copy()` otherwise inherits the master copy's read-only permissions.
 - Final confirmation audit `ses_014a38e21ffesGVGEvk49QjmhO` confirmed a root-level rerun is warning-free, all statistics are byte-stable, and the local environment is self-contained. It identified only a stale 34-PNG checklist count and incomplete package metadata in `sessionInfo.txt`, both corrected before the final audit.
 - Final audit `ses_0149c648affe06PTXLXWW6Y5Pe` PASS: `renv::status()` clean; all six direct packages in `sessionInfo.txt` match `renv.lock`; all current project/checklist references report 41 PNGs. Validation report updated with all three audit sessions and independent verification evidence.
+
+## 2026-08-10 — Task B Reproducibility and Visual Cleanup
+- Made `task_b_network.R` portable and self-contained: `--file` path resolution, project-local `renv`, writable working copy, complete B lockfile and refreshed session evidence.
+- Replaced fragile platform-specific GML export with a self-contained writer; GML and GraphML both reopen as directed 15-node/28-edge graphs.
+- Preserved all graph-generation code and visual perspectives. Removed only `graphs/network_graph.png`, a byte-for-byte legacy alias of the FR overview, leaving 16 current PNGs.
+- Made both optional visual scripts portable and project-local; they remove the same legacy alias after generating their normal outputs. Corrected plotting warnings without reducing graph generation.
+- Max-effort audit `ses_014348e34ffeJJvQqyH7TA9RQ0` verified metrics, environment, exports and visual cleanup. Final audit `ses_014254e30ffeT1Uz5BnqYYvb59` PASS confirmed the 16 retained PNGs, intentional alias removal, locked environment, warning-free graph exports and documentation consistency before commit.
 - Restored write permission (`644`) to `working_data/Air_Transport_Data.csv`; its SHA-256 matches the protected master copy before the re-run.
 - Re-ran Task A from the repository root and regenerated the affected exports; all three independent validation audits completed before commit.

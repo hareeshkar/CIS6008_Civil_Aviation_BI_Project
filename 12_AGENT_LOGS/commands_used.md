@@ -54,3 +54,12 @@ Rscript 04_Task_A_R_Regression/scripts/task_a_regression.R
 Rscript -e "suppressPackageStartupMessages({library(tidyverse); library(car); library(lmtest); library(corrplot); library(psych); library(ggplot2)}); writeLines(capture.output(sessionInfo()), 'screenshots/sessionInfo.txt')"
 shasum -a 256 "03_Original_Datasets/Task_A/Air_Transport_Data.csv" "04_Task_A_R_Regression/working_data/Air_Transport_Data.csv"
 ```
+
+## 2026-08-10 — Task B Reproducibility and Visual Cleanup
+```bash
+Rscript -e "renv::snapshot(prompt = FALSE)"
+Rscript 05_Task_B_Network_Analysis/scripts/task_b_network.R
+Rscript 05_Task_B_Network_Analysis/scripts/network_graphs_final.R
+Rscript 05_Task_B_Network_Analysis/scripts/network_visuals.R
+Rscript -e "igraph::read_graph('outputs/graph.gml', format='gml'); igraph::read_graph('outputs/graph.graphml', format='graphml')"
+```

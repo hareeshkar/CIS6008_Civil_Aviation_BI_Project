@@ -344,7 +344,10 @@ cat("  Vulnerability written\n")
 cat("\n[7] Exporting graph\n")
 write_graph(g, file.path(outputs_dir, "graph.graphml"), format="graphml")
 # Write GML directly: igraph's macOS writer rejects these character vertex IDs.
-gml_quote <- function(x) gsub('"', '\\\\"', x, fixed = TRUE)
+gml_quote <- function(x) {
+  x <- gsub("&", "&amp;", x, fixed = TRUE)
+  gsub('"', '\\\\"', x, fixed = TRUE)
+}
 gml_lines <- c("graph [", "  directed 1")
 for (i in seq_len(vcount(g))) {
   gml_lines <- c(gml_lines, "  node [", paste0("    id ", i - 1),

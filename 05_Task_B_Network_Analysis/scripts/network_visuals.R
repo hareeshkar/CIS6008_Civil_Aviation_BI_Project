@@ -1,5 +1,17 @@
 #!/usr/bin/env Rscript
 # Enhanced network graphs — more readable, user-friendly, enhanced look
+file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+if (length(file_arg) == 1L) {
+  base_dir <- dirname(dirname(normalizePath(sub("^--file=", "", file_arg))))
+} else if (dir.exists(file.path(getwd(), "outputs"))) {
+  base_dir <- normalizePath(getwd())
+} else {
+  base_dir <- normalizePath(file.path(getwd(), "05_Task_B_Network_Analysis"))
+}
+if (!dir.exists(file.path(base_dir, "outputs"))) stop("Task B directory not found: ", base_dir)
+setwd(base_dir)
+if (file.exists("renv/activate.R")) source("renv/activate.R")
+
 suppressPackageStartupMessages({
   library(tidyverse)
   library(igraph)
@@ -9,7 +21,6 @@ suppressPackageStartupMessages({
   library(viridis)
 })
 
-base_dir <- "/Users/hareeshkar/Documents/CIS6008_Civil_Aviation_BI_Project/05_Task_B_Network_Analysis"
 g <- readRDS(file.path(base_dir, "outputs/graph_raw.rds"))
 edges_raw <- read_csv(file.path(base_dir, "working_data/SriLanka_Aviation_SNA_Dataset.csv"), show_col_types=FALSE)
 cent <- read_csv(file.path(base_dir, "metrics/node_centrality.csv"), show_col_types=FALSE)
@@ -72,7 +83,7 @@ p1 <- ggraph(tg, layout="fr", weights=Weight, niter=8000) +
   geom_edge_link(aes(colour=Relationship, width=Weight, alpha=Weight),
                  arrow=arrow(length=unit(2.8,"mm"), type="closed"),
                  end_cap=circle(5,"mm"), start_cap=circle(4,"mm"), show.legend=TRUE) +
-  geom_edge_loop(aes(colour=Relationship), alpha=0.4, span=60) +
+  geom_edge_loop(aes(colour=Relationship), alpha=0.4) +
   geom_node_point(aes(size=strength, fill=comm_f), shape=21, colour="white", stroke=1.2, alpha=0.95) +
   geom_node_text(aes(label=hub_label), repel=TRUE, size=3.2, family="Helvetica", fontface="bold",
                  bg.color="white", bg.r=0.15, max.overlaps=25, point.padding=unit(0.6,"mm")) +
@@ -90,6 +101,7 @@ ggsave(file.path(base_dir, "graphs/network_fruchterman.png"), p1, width=13, heig
 file.copy(file.path(base_dir, "graphs/network_fruchterman.png"), file.path(base_dir, "graphs/network_graph.png"), overwrite=TRUE)
 file.copy(file.path(base_dir, "graphs/network_fruchterman.png"), file.path(base_dir, "graphs/network_louvain.png"), overwrite=TRUE)
 file.copy(file.path(base_dir, "graphs/network_fruchterman.png"), file.path(base_dir, "graphs/network_ggraph_fr.png"), overwrite=TRUE)
+file.remove(file.path(base_dir, "graphs/network_graph.png"))
 cat("saved enhanced FR (as network_fruchterman.png / network_graph.png / network_louvain.png)\n")
 
 # 2) Betweenness enhanced — red heatmap for bottlenecks
