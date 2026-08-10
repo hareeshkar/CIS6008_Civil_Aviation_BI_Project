@@ -3,7 +3,22 @@
 # Steps: load → inspect → build graph → centralities → communities → vulnerability → export plots/tables
 # Inherits same model pattern as Task A: renv-aware, copy-before-transform, traceable outputs
 
-if (file.exists("renv/activate.R")) source("renv/activate.R")
+# --- paths and project-local environment ---
+file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+if (length(file_arg) == 1L) {
+  base_dir <- dirname(dirname(normalizePath(sub("^--file=", "", file_arg))))
+} else if (dir.exists(file.path(getwd(), "outputs"))) {
+  base_dir <- normalizePath(getwd())
+} else {
+  base_dir <- normalizePath(file.path(getwd(), "05_Task_B_Network_Analysis"))
+}
+if (!dir.exists(file.path(base_dir, "outputs"))) stop("Task B directory not found: ", base_dir)
+
+renv_activate <- file.path(base_dir, "renv", "activate.R")
+if (file.exists(renv_activate)) {
+  setwd(base_dir)
+  source(renv_activate)
+}
 
 suppressPackageStartupMessages({
   library(tidyverse)
@@ -13,11 +28,8 @@ suppressPackageStartupMessages({
   library(scales)
 })
 
-# --- paths (explicit, like Task A) ---
-base_dir <- "/Users/hareeshkar/Documents/CIS6008_Civil_Aviation_BI_Project/05_Task_B_Network_Analysis"
-base_dir <- normalizePath(base_dir)
 cat("Base dir:", base_dir, "\n")
-src_csv <- "/Users/hareeshkar/Documents/CIS6008_Civil_Aviation_BI_Project/03_Original_Datasets/Task_B/SriLanka_Aviation_SNA_Dataset.csv"
+src_csv <- file.path(dirname(base_dir), "03_Original_Datasets", "Task_B", "SriLanka_Aviation_SNA_Dataset.csv")
 working_dir <- file.path(base_dir, "working_data")
 outputs_dir <- file.path(base_dir, "outputs")
 metrics_dir <- file.path(base_dir, "metrics")
@@ -29,12 +41,17 @@ dir.create(graphs_dir,  showWarnings = FALSE, recursive = TRUE)
 
 # --- 1. Load (copy-before-transform) ---
 cat("[1] Loading SriLanka_Aviation_SNA_Dataset.csv\n")
-if (file.exists(src_csv)) {
-  file.copy(src_csv, file.path(working_dir, "SriLanka_Aviation_SNA_Dataset.csv"), overwrite = TRUE)
-  cat("  Copied master -> working_data/\n")
-}
 csv_path <- file.path(working_dir, "SriLanka_Aviation_SNA_Dataset.csv")
-if (!file.exists(csv_path)) csv_path <- src_csv
+if (file.exists(src_csv)) {
+  # The protected master is mode 0444; make the derived working copy replaceable.
+  if (file.exists(csv_path)) Sys.chmod(csv_path, mode = "0644")
+  copied <- file.copy(src_csv, csv_path, overwrite = TRUE)
+  if (!copied) stop("Could not copy source CSV to: ", csv_path)
+  Sys.chmod(csv_path, mode = "0644")
+  cat("  Copied master -> working_data/\n")
+} else {
+  stop("Source CSV not found: ", src_csv)
+}
 edges_raw <- read_csv(csv_path, show_col_types = FALSE)
 cat("  Rows:", nrow(edges_raw), "Cols:", ncol(edges_raw), "\n")
 print(glimpse(edges_raw))
@@ -412,7 +429,6 @@ names(comm_cols) <- V(g)$name
 plot_network(g, coords_fr,  file.path(graphs_dir, "network_fruchterman.png"),
              "Sri Lanka Aviation Network — Fruchterman-Reingold (directed, weighted)\nn=15 nodes, 28 edges; colour = Louvain community",
              vertex_color = comm_cols)
-# Also alias per spec
 file.copy(file.path(graphs_dir, "network_fruchterman.png"), file.path(graphs_dir, "network_graph.png"), overwrite=TRUE)
 
 # Kamada-Kawai
@@ -427,7 +443,6 @@ plot_network(g, coords_circle, file.path(graphs_dir, "network_circle.png"),
              vertex_color = comm_cols)
 
 # Louvain communities highlighted — use undirected coords but same g
-# For Louvain emphasis, color more vividly
 plot_network(g, coords_fr, file.path(graphs_dir, "network_louvain.png"),
              paste0("Communities (Louvain) — ", length(comm_louvain), " clusters, modularity ", round(mod_louvain,3), " | Walktrap ", length(comm_walktrap), " mod ", round(mod_walktrap,3)),
              vertex_color = comm_cols)
@@ -482,9 +497,7 @@ for (metric in c("degree_total","betweenness","eigenvector","pagerank","strength
 
 # ggraph version for polished publication (if ggraph available — use FR)
 tryCatch({
-  # Build tidygraph
-  tg <- as_tbl_graph(g)
-  tg <- tg %>%
+  tg <- as_tbl_graph(g) %>%
     activate(nodes) %>%
     mutate(deg = centrality_degree(mode="all"),
            btw = centrality_betweenness(weights = distance),
@@ -501,6 +514,9 @@ tryCatch({
     theme_graph() + theme(legend.position="bottom")
   ggsave(file.path(graphs_dir, "network_ggraph_fr.png"), p_gg, width=11, height=8, dpi=300)
 }, error=function(e) cat(" ggraph plot skipped:", conditionMessage(e), "\n"))
+
+# network_graph is only a legacy byte-for-byte alias of the FR overview.
+file.remove(file.path(graphs_dir, "network_graph.png"))
 
 cat("\n=== Task B Complete ===\n")
 cat("Nodes:", vcount(g), "Edges:", ecount(g), "\n")
