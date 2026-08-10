@@ -16,6 +16,7 @@ suppressPackageStartupMessages({
   library(psych)      # describe, skew/kurtosis
   library(ggplot2)
 })
+options(scipen = 999)  # 100% safe: never 4e+04, always 40,000
 
 # --- paths ---
 base_dir <- "/Users/hareeshkar/Documents/CIS6008_Civil_Aviation_BI_Project/04_Task_A_R_Regression"
@@ -141,14 +142,27 @@ for (v in expected) {
     theme_minimal()
   ggsave(file.path(plots_dir, paste0("qq_", v, ".png")), p, width = 6, height = 4.5, dpi = 300)
 }
-# Histogram + density per variable
+# Histograms per variable — 100% safe: both density and frequency, each with comma labels, no scientific notation, consistent across all 7
 for (v in expected) {
-  p <- ggplot(df, aes(x = .data[[v]])) +
+  # Frequency version (y = count) — natural counts, no red density line
+  p_freq <- ggplot(df, aes(x = .data[[v]])) +
+    geom_histogram(bins = 30, fill = "#2C73D2", color = "white", alpha = 0.85) +
+    labs(title = paste0("Distribution: ", v), subtitle = "Frequency", x = v, y = "Frequency") +
+    scale_x_continuous(labels = scales::label_comma()) +
+    scale_y_continuous(labels = scales::label_comma()) +
+    theme_minimal(base_size = 11) +
+    theme(plot.title = element_text(size = 12, face = "bold"), plot.subtitle = element_text(size = 10, color = "grey30"))
+  ggsave(file.path(plots_dir, paste0("hist_", v, ".png")), p_freq, width = 6, height = 4.5, dpi = 300)
+  # Density version (y = density) with density curve overlay — density on left y
+  p_dens <- ggplot(df, aes(x = .data[[v]])) +
     geom_histogram(aes(y = after_stat(density)), bins = 30, fill = "#2C73D2", color = "white", alpha = 0.85) +
     geom_density(color = "#D93D2B", linewidth = 0.9) +
-    labs(title = paste0("Distribution: ", v), x = v, y = "Density") +
-    theme_minimal()
-  ggsave(file.path(plots_dir, paste0("hist_", v, ".png")), p, width = 6, height = 4.5, dpi = 300)
+    labs(title = paste0("Distribution: ", v), subtitle = "Density overlay", x = v, y = "Density") +
+    scale_x_continuous(labels = scales::label_comma()) +
+    scale_y_continuous(labels = scales::label_number(accuracy = 0.00001, decimal.mark = ".")) +
+    theme_minimal(base_size = 11) +
+    theme(plot.title = element_text(size = 12, face = "bold"), plot.subtitle = element_text(size = 10, color = "grey30"))
+  ggsave(file.path(plots_dir, paste0("hist_density_", v, ".png")), p_dens, width = 6, height = 4.5, dpi = 300)
 }
 # Combined QQ grid
 qq_grid_file <- file.path(plots_dir, "qq_all_variables.png")
@@ -208,6 +222,8 @@ for (iv in vars_iv) {
       x = paste0(iv, " [", iv_units[iv], "]"),
       y = paste0(var_dv, " [passengers]")
     ) +
+    scale_x_continuous(labels = scales::label_comma()) +
+    scale_y_continuous(labels = scales::label_comma()) +
     theme_minimal() + theme(plot.title = element_text(face = "bold"))
   # per-spec names expected by validator
   mapping_names <- c(
@@ -359,16 +375,16 @@ dev.off()
 # Individual enhanced plots
 # Residuals vs Fitted enhanced ggplot
 res_df <- tibble(fitted = fitted(m_multi), resid = resid_vals, std_resid = rstandard(m_multi), cooks = cooks.distance(m_multi))
-p1 <- ggplot(res_df, aes(fitted, resid)) + geom_point(alpha=0.6, color="#2C73D2") + geom_hline(yintercept=0, linetype="dashed", color="red") + geom_smooth(se=FALSE, color="#D93D2B") + labs(title="Residuals vs Fitted", x="Fitted values", y="Residuals") + theme_minimal()
+p1 <- ggplot(res_df, aes(fitted, resid)) + geom_point(alpha=0.6, color="#2C73D2") + geom_hline(yintercept=0, linetype="dashed", color="red") + geom_smooth(se=FALSE, color="#D93D2B") + labs(title="Residuals vs Fitted", x="Fitted values", y="Residuals") + scale_x_continuous(labels = scales::label_comma()) + scale_y_continuous(labels = scales::label_comma()) + theme_minimal()
 ggsave(file.path(plots_dir, "residuals_vs_fitted.png"), p1, width=7, height=5, dpi=300)
 # Scale-Location
-p2 <- ggplot(res_df, aes(fitted, sqrt(abs(std_resid)))) + geom_point(alpha=0.6, color="#2C73D2") + geom_smooth(se=FALSE, color="#D93D2B") + labs(title="Scale-Location", x="Fitted values", y="Sqrt(|Standardized residuals|)") + theme_minimal()
+p2 <- ggplot(res_df, aes(fitted, sqrt(abs(std_resid)))) + geom_point(alpha=0.6, color="#2C73D2") + geom_smooth(se=FALSE, color="#D93D2B") + labs(title="Scale-Location", x="Fitted values", y="Sqrt(|Standardized residuals|)") + scale_x_continuous(labels = scales::label_comma()) + scale_y_continuous(labels = scales::label_number()) + theme_minimal()
 ggsave(file.path(plots_dir, "scale_location.png"), p2, width=7, height=5, dpi=300)
 # Q-Q residuals
-p3 <- ggplot(res_df, aes(sample = std_resid)) + stat_qq(color="#2C73D2") + stat_qq_line(color="red") + labs(title="Normal Q-Q (Standardized Residuals)") + theme_minimal()
+p3 <- ggplot(res_df, aes(sample = std_resid)) + stat_qq(color="#2C73D2") + stat_qq_line(color="red") + labs(title="Normal Q-Q (Standardized Residuals)", x = "Theoretical Quantiles", y = "Standardized residuals") + theme_minimal()
 ggsave(file.path(plots_dir, "qq_residuals.png"), p3, width=7, height=5, dpi=300)
 # Residuals vs Leverage
-p4 <- ggplot(res_df, aes(x = hatvalues(m_multi), y = std_resid)) + geom_point(aes(size = cooks), alpha=0.6, color="#2C73D2") + geom_hline(yintercept=0, linetype="dashed") + labs(title="Residuals vs Leverage", x="Leverage (hat)", y="Standardized residuals", size="Cook's D") + theme_minimal()
+p4 <- ggplot(res_df, aes(x = hatvalues(m_multi), y = std_resid)) + geom_point(aes(size = cooks), alpha=0.6, color="#2C73D2") + geom_hline(yintercept=0, linetype="dashed") + labs(title="Residuals vs Leverage", x="Leverage (hat)", y="Standardized residuals", size="Cook's D") + scale_y_continuous(labels = scales::label_comma()) + theme_minimal()
 ggsave(file.path(plots_dir, "residuals_vs_leverage.png"), p4, width=7, height=5, dpi=300)
 
 # --- 10. Additional: influence / outlier table ---
