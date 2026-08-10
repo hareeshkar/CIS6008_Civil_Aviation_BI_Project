@@ -9,16 +9,7 @@ suppressPackageStartupMessages({
   library(scales)
 })
 
-file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
-if (length(file_arg) == 1L) {
-  base_dir <- dirname(dirname(normalizePath(sub("^--file=", "", file_arg))))
-} else if (dir.exists(file.path(getwd(), "outputs"))) {
-  base_dir <- normalizePath(getwd())
-} else {
-  base_dir <- normalizePath(file.path(getwd(), "05_Task_B_Network_Analysis"))
-}
-if (!dir.exists(file.path(base_dir, "outputs"))) stop("Task B directory not found: ", base_dir)
-setwd(base_dir)
+base_dir <- "/Users/hareeshkar/Documents/CIS6008_Civil_Aviation_BI_Project/05_Task_B_Network_Analysis"
 g <- readRDS(file.path(base_dir, "outputs/graph_raw.rds"))
 cent <- read_csv(file.path(base_dir, "metrics/node_centrality.csv"), show_col_types=FALSE)
 comm <- read_csv(file.path(base_dir, "metrics/communities.csv"), show_col_types=FALSE)

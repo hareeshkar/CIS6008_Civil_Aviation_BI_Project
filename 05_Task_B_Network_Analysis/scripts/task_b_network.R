@@ -343,19 +343,21 @@ cat("  Vulnerability written\n")
 # --- 7. Export graph ---
 cat("\n[7] Exporting graph\n")
 write_graph(g, file.path(outputs_dir, "graph.graphml"), format="graphml")
-# GML: igraph GML writer bug on macOS with char name — wrap in try, fallback to GraphML->GML via python
-tryCatch({
-  g2 <- g
-  # create numeric surrogate for GML id; keep name as label
-  V(g2)$label <- V(g2)$name
-  V(g2)$name <- as.character(seq_len(vcount(g2)))
-  write_graph(g2, file.path(outputs_dir, "graph.gml"), format="gml")
-  cat("  GML written via igraph\n")
-}, error=function(e) {
-  cat("  GML igraph failed:", conditionMessage(e), " — will generate via python fallback after R\n")
-  # write placeholder; python will overwrite
-  writeLines("graph [ ]", file.path(outputs_dir, "graph.gml"))
-})
+# Write GML directly: igraph's macOS writer rejects these character vertex IDs.
+gml_quote <- function(x) gsub('"', '\\\\"', x, fixed = TRUE)
+gml_lines <- c("graph [", "  directed 1")
+for (i in seq_len(vcount(g))) {
+  gml_lines <- c(gml_lines, "  node [", paste0("    id ", i - 1),
+                 paste0('    label "', gml_quote(V(g)$name[i]), '"'), "  ]")
+}
+for (i in seq_len(ecount(g))) {
+  gml_lines <- c(gml_lines, "  edge [",
+                 paste0("    source ", as.integer(tail_of(g, E(g)[i])) - 1),
+                 paste0("    target ", as.integer(head_of(g, E(g)[i])) - 1),
+                 paste0("    weight ", E(g)$Weight[i]),
+                 paste0('    relationship "', gml_quote(E(g)$Relationship[i]), '"'), "  ]")
+}
+writeLines(c(gml_lines, "]"), file.path(outputs_dir, "graph.gml"))
 # Edge list export
 write_csv(edges_raw, file.path(metrics_dir, "edgelist.csv"))
 write_csv(edges_raw, file.path(outputs_dir, "edgelist.csv"))
