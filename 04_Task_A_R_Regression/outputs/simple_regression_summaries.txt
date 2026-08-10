@@ -10,21 +10,21 @@ Residuals:
 -144234  -31671       9   32371  124420 
 
 Coefficients:
-                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)     1.954e+04  1.543e+04   1.267    0.207    
-airport_traffic 4.459e-01  7.587e-02   5.877 1.75e-08 ***
+                   Estimate  Std. Error t value     Pr(>|t|)    
+(Intercept)     19542.28486 15426.85304   1.267        0.207    
+airport_traffic     0.44589     0.07587   5.877 0.0000000175 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 49820 on 198 degrees of freedom
 Multiple R-squared:  0.1485,	Adjusted R-squared:  0.1442 
-F-statistic: 34.54 on 1 and 198 DF,  p-value: 1.746e-08
+F-statistic: 34.54 on 1 and 198 DF,  p-value: 0.00000001746
 
 
 --- 95% CI ---
-                        2.5 %       97.5 %
-(Intercept)     -1.087974e+04 4.996431e+04
-airport_traffic  2.962749e-01 5.955066e-01
+                         2.5 %        97.5 %
+(Intercept)     -10879.7389533 49964.3086822
+airport_traffic      0.2962749     0.5955066
 
 
 ======== SIMPLE REGRESSION: passenger_demand ~ avg_income ========
@@ -37,9 +37,9 @@ Residuals:
 -163904  -39056    3439   32650  162735 
 
 Coefficients:
-             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 9.293e+04  2.165e+04   4.293 2.76e-05 ***
-avg_income  2.253e-01  3.228e-01   0.698    0.486    
+              Estimate Std. Error t value  Pr(>|t|)    
+(Intercept) 92934.3432 21649.9809   4.293 0.0000276 ***
+avg_income      0.2253     0.3228   0.698     0.486    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -49,9 +49,9 @@ F-statistic: 0.4873 on 1 and 198 DF,  p-value: 0.4859
 
 
 --- 95% CI ---
-                    2.5 %       97.5 %
-(Intercept) 50240.2025305 1.356285e+05
-avg_income     -0.4111681 8.617824e-01
+                    2.5 %         97.5 %
+(Intercept) 50240.2025305 135628.4838055
+avg_income     -0.4111681      0.8617824
 
 
 ======== SIMPLE REGRESSION: passenger_demand ~ fuel_price ========
@@ -91,9 +91,9 @@ Residuals:
 -167766  -39458    1938   32247  161299 
 
 Coefficients:
-                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)     117860.69   23792.86   4.954 1.56e-06 ***
-avg_ticket_fare    -40.14      93.80  -0.428    0.669    
+                 Estimate Std. Error t value   Pr(>|t|)    
+(Intercept)     117860.69   23792.86   4.954 0.00000156 ***
+avg_ticket_fare    -40.14      93.80  -0.428      0.669    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -145,9 +145,9 @@ Residuals:
 -170698  -41978    2295   33646  157655 
 
 Coefficients:
-                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)    116167.628  14910.763   7.791 3.67e-13 ***
-route_distance     -5.379      9.279  -0.580    0.563    
+                 Estimate Std. Error t value          Pr(>|t|)    
+(Intercept)    116167.628  14910.763   7.791 0.000000000000367 ***
+route_distance     -5.379      9.279  -0.580             0.563    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
