@@ -1,0 +1,113 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "ea3d03768a4b8e1c49ac",
+  "position": {
+    "x": 200.26914517607017,
+    "y": 6.03220316795392,
+    "z": 0,
+    "height": 359.51930881005364,
+    "width": 480.16337216913206
+  },
+  "visual": {
+    "visualType": "map",
+    "query": {
+      "queryState": {
+        "Location": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Destination Country"
+                }
+              },
+              "queryRef": "BIA_CMB.Destination Country",
+              "nativeQueryRef": "Destination Country",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIA_CMB"
+                        }
+                      },
+                      "Property": "Flight_ID"
+                    }
+                  },
+                  "Function": 2
+                }
+              },
+              "queryRef": "Count(BIA_CMB.Flight_ID)",
+              "nativeQueryRef": "Count of Flight_ID"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Traffic by Country'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ffeb563b8dee8e91d1e2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BIA_CMB"
+              }
+            },
+            "Property": "Destination Country"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "46d4b908aa655205556c",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BIA_CMB"
+                  }
+                },
+                "Property": "Flight_ID"
+              }
+            },
+            "Function": 2
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

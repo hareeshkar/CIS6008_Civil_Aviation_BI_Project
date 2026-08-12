@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "f1de68373cada36c5411",
+  "position": {
+    "x": 620,
+    "y": 160,
+    "z": 0,
+    "height": 260,
+    "width": 620
+  },
+  "visual": {
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Airline"
+                }
+              },
+              "queryRef": "BIA_CMB.Airline",
+              "nativeQueryRef": "Airline",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIA_CMB"
+                        }
+                      },
+                      "Property": "Delay_Minutes"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(BIA_CMB.Delay_Minutes)",
+              "nativeQueryRef": "Sum of Delay_Minutes"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Delay by Airline'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "clusteredBarChart"
+  }
+}

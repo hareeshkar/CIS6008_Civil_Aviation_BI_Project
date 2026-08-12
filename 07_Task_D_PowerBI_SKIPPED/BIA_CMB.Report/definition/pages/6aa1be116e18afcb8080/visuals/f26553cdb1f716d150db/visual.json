@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "f26553cdb1f716d150db",
+  "position": {
+    "x": 160.45660426757428,
+    "y": 381.23524021468774,
+    "z": 0,
+    "height": 329.358292970284,
+    "width": 279.89422699306192
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "SMR_Location"
+                }
+              },
+              "queryRef": "BIA_CMB.SMR_Location",
+              "nativeQueryRef": "SMR_Location",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIA_CMB"
+                        }
+                      },
+                      "Property": "Flight_ID"
+                    }
+                  },
+                  "Function": 2
+                }
+              },
+              "queryRef": "Count(BIA_CMB.Flight_ID)",
+              "nativeQueryRef": "Count of Flight_ID"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Aircraft Location Distribution'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

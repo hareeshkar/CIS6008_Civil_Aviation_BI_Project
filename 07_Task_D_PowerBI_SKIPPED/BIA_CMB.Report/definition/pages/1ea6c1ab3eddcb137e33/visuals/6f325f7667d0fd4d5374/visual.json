@@ -1,0 +1,52 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "6f325f7667d0fd4d5374",
+  "position": {
+    "x": 539.27896321508047,
+    "y": 54.289828511585284,
+    "z": 0,
+    "height": 72,
+    "width": 200
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Total Delayed Flights"
+                }
+              },
+              "queryRef": "BIA_CMB.Total Delayed Flights",
+              "nativeQueryRef": "Total Delayed Flights"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Delayed Flights'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

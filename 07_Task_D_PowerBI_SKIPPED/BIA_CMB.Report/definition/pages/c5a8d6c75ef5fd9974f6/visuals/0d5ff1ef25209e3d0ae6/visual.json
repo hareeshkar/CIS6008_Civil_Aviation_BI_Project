@@ -1,0 +1,52 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "0d5ff1ef25209e3d0ae6",
+  "position": {
+    "x": 342,
+    "y": 58,
+    "z": 0,
+    "height": 72,
+    "width": 145
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Total Departures"
+                }
+              },
+              "queryRef": "BIA_CMB.Total Departures",
+              "nativeQueryRef": "Total Departures"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Departures'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

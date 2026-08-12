@@ -1,0 +1,128 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "e7fc0eb69b388bfa1a41",
+  "position": {
+    "x": 860,
+    "y": 395,
+    "z": 0,
+    "height": 315,
+    "width": 380
+  },
+  "visual": {
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Flight_ID"
+                }
+              },
+              "queryRef": "BIA_CMB.Flight_ID",
+              "nativeQueryRef": "Flight_ID",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Airline"
+                }
+              },
+              "queryRef": "BIA_CMB.Airline",
+              "nativeQueryRef": "Airline",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Route"
+                }
+              },
+              "queryRef": "BIA_CMB.Route",
+              "nativeQueryRef": "Route",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Delay_Minutes"
+                }
+              },
+              "queryRef": "BIA_CMB.Delay_Minutes",
+              "nativeQueryRef": "Delay_Minutes",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Issue_Type"
+                }
+              },
+              "queryRef": "BIA_CMB.Issue_Type",
+              "nativeQueryRef": "Issue_Type",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Alert_Status"
+                }
+              },
+              "queryRef": "BIA_CMB.Alert_Status",
+              "nativeQueryRef": "Alert_Status",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Flight Operations Table'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "tableEx"
+  }
+}

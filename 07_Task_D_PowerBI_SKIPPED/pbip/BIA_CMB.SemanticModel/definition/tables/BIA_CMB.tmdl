@@ -1,0 +1,235 @@
+table BIA_CMB
+	lineageTag: a3e107ac-8ba6-4d6f-9a26-481314ebe37a
+
+	measure 'Total Flights' = COUNT('BIA_CMB'[Flight_ID])
+		lineageTag: add0213b-e0ee-4b94-8d1b-9f566355b433
+
+	measure 'Total Arrivals' = CALCULATE(COUNT('BIA_CMB'[Flight_ID]), 'BIA_CMB'[Flight_Type] = "Arrival")
+		lineageTag: 0c8a42f8-e020-4d61-94aa-e9aee7bfc9fb
+
+	measure 'Total Departures' = CALCULATE(COUNT('BIA_CMB'[Flight_ID]), 'BIA_CMB'[Flight_Type] = "Departure")
+		lineageTag: 177c2e72-0f6f-49a6-9c34-5d15e56d317a
+
+	measure 'Delayed Flights' = CALCULATE(COUNT('BIA_CMB'[Flight_ID]), 'BIA_CMB'[Status] = "Delayed")
+		lineageTag: 841e298b-c293-4115-aa1a-b0fc7039f96f
+
+	measure 'On-Time Flights' = CALCULATE(COUNT('BIA_CMB'[Flight_ID]), 'BIA_CMB'[Status] = "On Time")
+		lineageTag: 0a8c322d-4fe4-4df1-a292-43b4fc92e4ec
+
+	measure 'Critical Alerts' = CALCULATE(COUNT('BIA_CMB'[Flight_ID]), 'BIA_CMB'[Alert_Status] = "Critical")
+		lineageTag: 1b56354f-9231-4d18-b813-756cfce98155
+
+	measure 'Total Passengers' = SUM('BIA_CMB'[Passenger_Count])
+		lineageTag: 7f9130d2-a89b-4241-8014-78654e15b744
+
+	measure 'Average Load Factor' = AVERAGE('BIA_CMB'[Load_Factor_%])
+		lineageTag: ffb9e1c6-d9ca-4ab4-b9d5-d93f2d189403
+
+	measure 'Average Delay' = AVERAGE('BIA_CMB'[Delay_Minutes])
+		lineageTag: 1b05412f-71c5-4ff5-9247-7e474191935a
+
+	measure 'Total Delayed Flights' = CALCULATE(COUNT('BIA_CMB'[Flight_ID]), 'BIA_CMB'[Status] = "Delayed")
+		lineageTag: 0ed2d34f-3b2c-4ad7-a349-3d42d11310da
+
+	measure 'Warning Alerts' = CALCULATE(COUNT('BIA_CMB'[Flight_ID]), 'BIA_CMB'[Alert_Status] = "Warning")
+		lineageTag: 152b1fe6-973d-440e-a93b-eb8647d1ef2f
+
+	measure 'Normal Alerts' = CALCULATE(COUNT('BIA_CMB'[Flight_ID]), 'BIA_CMB'[Alert_Status] = "Normal")
+		lineageTag: c5ff77eb-e9de-40bb-a184-56199523e3b7
+
+	column Flight_ID
+		dataType: string
+		lineageTag: fd9a4b58-c5a3-47c7-b6ca-dc5eb8323f3b
+		sourceColumn: Flight_ID
+
+	column Airline
+		dataType: string
+		lineageTag: 027c7e02-9411-49b8-855b-88416c12e97b
+		sourceColumn: Airline
+
+	column Route
+		dataType: string
+		lineageTag: 5169d780-6829-4926-861f-b4c12ab18db9
+		sourceColumn: Route
+
+	column Flight_Type
+		dataType: string
+		lineageTag: 4884384d-2065-4312-9158-9a0c7d8494ef
+		sourceColumn: Flight_Type
+
+	column Scheduled_Time
+		dataType: dateTime
+		lineageTag: 6c8855e6-d934-4bcd-b983-d81a57617b99
+		summarizeBy: none
+		sourceColumn: Scheduled_Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estimated_Time
+		dataType: dateTime
+		lineageTag: a64aa921-41b3-4d62-bd91-f673d2d98113
+		summarizeBy: none
+		sourceColumn: Estimated_Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gate
+		dataType: int64
+		lineageTag: 23bb287b-d3d8-4362-a4ba-56597e89c184
+		summarizeBy: none
+		sourceColumn: Gate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Terminal
+		dataType: string
+		lineageTag: 946a1333-f365-456a-8fef-b3fb064d5a0e
+		sourceColumn: Terminal
+
+	column Runway
+		dataType: string
+		lineageTag: 5b484d7b-3ab6-4b27-bdb4-2538dadd7bfb
+		sourceColumn: Runway
+
+	column Status
+		dataType: string
+		lineageTag: 8f76db43-2512-4d3a-b07f-c8746591f6bb
+		sourceColumn: Status
+
+	column Delay_Minutes
+		dataType: int64
+		lineageTag: e9366747-6599-4619-a5d9-2a3da7f11ff9
+		summarizeBy: none
+		sourceColumn: Delay_Minutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Aircraft_Type
+		dataType: string
+		lineageTag: bd54e5ba-0d8f-422d-a5f8-4ce53ba4bdd6
+		sourceColumn: Aircraft_Type
+
+	column Aircraft_Capacity
+		dataType: int64
+		lineageTag: f1b4feae-c5bd-421b-846c-a832cb83e036
+		summarizeBy: none
+		sourceColumn: Aircraft_Capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weather_Condition
+		dataType: string
+		lineageTag: 9f405509-2edb-464d-bda2-a7f685e92296
+		sourceColumn: Weather_Condition
+
+	column Temperature_C
+		dataType: int64
+		lineageTag: b1e0622c-0707-4069-89a6-308d3fcb2af7
+		summarizeBy: none
+		sourceColumn: Temperature_C
+
+		annotation SummarizationSetBy = Automatic
+
+	column Wind_Speed_kmh
+		dataType: int64
+		lineageTag: 63a1b450-1ab9-4255-a618-478438faeb94
+		summarizeBy: none
+		sourceColumn: Wind_Speed_kmh
+
+		annotation SummarizationSetBy = Automatic
+
+	column PSR_Track_ID
+		dataType: string
+		lineageTag: aaf277c4-26e5-4700-bfb6-e496b040957c
+		sourceColumn: PSR_Track_ID
+
+	column SSR_Code
+		dataType: string
+		lineageTag: 0c335d21-570e-4185-bcd5-92716fdcd624
+		sourceColumn: SSR_Code
+
+	column SMR_Location
+		dataType: string
+		lineageTag: 6bfd986a-2d93-4a53-b309-b2367dcfa128
+		sourceColumn: SMR_Location
+
+	column Latitude
+		dataType: string
+		lineageTag: dfd17ed9-0d64-4c8f-92da-1d82e458a9e7
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: string
+		lineageTag: d0892e95-ed76-4cf0-af07-87284804818d
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Alert_Status
+		dataType: string
+		lineageTag: 25d24074-b135-4d9a-9f7a-1dfc53341931
+		sourceColumn: Alert_Status
+
+	column Issue_Type
+		dataType: string
+		lineageTag: 381a5dda-b746-467e-9b2e-b208381542d1
+		sourceColumn: Issue_Type
+
+	column Turnaround_Time
+		dataType: int64
+		lineageTag: e0b68ee8-b85e-45fa-b2bf-b3c259cb8a47
+		summarizeBy: none
+		sourceColumn: Turnaround_Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Taxi_Time
+		dataType: int64
+		lineageTag: 79ebcf22-e048-483d-873e-7e67f3d8a82d
+		summarizeBy: none
+		sourceColumn: Taxi_Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Queue_Position
+		dataType: int64
+		lineageTag: 02f2a1af-fde1-4c99-ab70-06203efb6b57
+		summarizeBy: none
+		sourceColumn: Queue_Position
+
+		annotation SummarizationSetBy = Automatic
+
+	column Passenger_Count
+		dataType: int64
+		lineageTag: 1945437f-a20b-419b-b3d7-adcfcf57ff33
+		summarizeBy: none
+		sourceColumn: Passenger_Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Load_Factor_%
+		dataType: double
+		lineageTag: fb2af881-f078-4fd2-b2b2-042a64ee67f0
+		summarizeBy: none
+		sourceColumn: Load_Factor_%
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination Country' = RIGHT('BIA_CMB'[Route], LEN('BIA_CMB'[Route]) - FIND("-", 'BIA_CMB'[Route], 1))
+		dataType: string
+		lineageTag: 899f20af-0f55-48fa-9cb7-e281a18da181
+
+	partition BIA_CMB = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\hirus\Desktop\CIS6008\CIS6008_Civil_Aviation_BI_Project\07_Task_D_PowerBI_SKIPPED\cleaned_data\BIA_CMB_clean.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Scheduled_Time", type datetime},{"Estimated_Time", type datetime},{"Gate", Int64.Type},{"Delay_Minutes", Int64.Type},{"Aircraft_Capacity", Int64.Type},{"Temperature_C", Int64.Type},{"Wind_Speed_kmh", Int64.Type},{"Turnaround_Time", Int64.Type},{"Taxi_Time", Int64.Type},{"Queue_Position", Int64.Type},{"Passenger_Count", Int64.Type},{"Load_Factor_%", type number}})
+				in
+				    #"Changed Type"
+

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "75d262979e430e6b073c",
+  "position": {
+    "x": 40,
+    "y": 435,
+    "z": 0,
+    "height": 275,
+    "width": 400
+  },
+  "visual": {
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Issue_Type"
+                }
+              },
+              "queryRef": "BIA_CMB.Issue_Type",
+              "nativeQueryRef": "Issue_Type",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIA_CMB"
+                        }
+                      },
+                      "Property": "Flight_ID"
+                    }
+                  },
+                  "Function": 2
+                }
+              },
+              "queryRef": "Count(BIA_CMB.Flight_ID)",
+              "nativeQueryRef": "Count of Flight_ID"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Delay Cause Analysis'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "pieChart"
+  }
+}

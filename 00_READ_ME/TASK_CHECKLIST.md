@@ -91,12 +91,15 @@
 - [ ] **QGIS Print Layout** `final_maps/BIA_Radar_Suitability_A3.pdf` (true A3 420×297 mm with raster embedded) + `qgis_project/BIA_Radar.qgz` — pending QGIS download
 - [ ] **QGIS layout screenshot** (Print Layout canvas) — pending QGIS download
 
-## Task D — Power BI — SKIPPED ON MAC — `07_Task_D_PowerBI_SKIPPED/`
+## Task D — Power BI — COMPLETE (2026-08-13, Windows) — `07_Task_D_PowerBI_SKIPPED/`
 
-- [ ] Copy `03_Original_Datasets/Task_D/BIA_CMB_Dataset.csv` → `cleaned_data/BIA_CMB_clean.csv` (clean: parse Scheduled_Time, derive Destination Country from Route)
-- [ ] `dax_spec/DAX_measures.md` with KPI definitions from `Task d Guide.docx` (Total Flights, Arrivals, Departures, Avg Delay, Delay by Airline, Load Factor etc.) — sample DAX provided but not executed on Mac
-- [ ] Wireframe/layout note for 3 pages (Executive, Delay Analysis, International Traffic map) — reference only; no `.pbix` claimed
-- [ ] Note in report: "Built spec on Mac; dashboard to be built on Windows/Power BI Desktop"
+- [x] Build Power BI Dashboard (`BIA_CMB.pbip` + `BIA_CMB.pbix`) with 3 pages: Executive Overview, Delay Analysis, International Traffic
+- [x] `cleaned_data/BIA_CMB_clean.csv` (40 rows × 28 cols, zero empty cells, typed via M TransformColumnTypes)
+- [x] `dax_spec/DAX_measures.md` with 12 measures + Destination Country DAX calc column, verified live
+- [x] PBIP: `pbip/BIA_CMB.pbip` (TMDL SemanticModel + Report definition, 31 visuals)
+- [x] Screenshots: `screenshots/` (Executive, Delay, International, Weather Clear filter, Table view) + `SCREENSHOT_INDEX.md`
+- [x] Live DAX validation: `outputs/DAX_validation.md` (Total Flights 40, Arr 18, Dep 22, Delayed 9, On-Time 6, Critical 13, Pax 8,974, Avg Load Factor 82.2, Avg Delay 31.4)
+- [x] Report section written to excellent band: `TASK_D_REPORT_EXCELLENT.docx` (~950 body words, 5 figures, 2 tables, Harvard refs)
 
 ## Cross-Cutting
 

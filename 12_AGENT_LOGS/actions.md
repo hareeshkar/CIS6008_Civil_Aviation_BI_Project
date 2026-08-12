@@ -107,3 +107,16 @@ Append every major operation here with date + summary + files touched.
 - Added `.gitignore` rules for SQLite `*.gpkg-shm` / `*.gpkg-wal` sidecar files (transient, previously tracked by accident â€” removed from index).
 - Committed SAM3 Colab route (Option 2) outputs + SAM3 post-process script + BIA_CORE clip + CLIP_INFO + WRIT1 brief PDF + buildings_manual.gpkg + Proposed_Radar_Locations.kmz + QGIS project updates.
 - Pushed to `origin/main` so the Windows clone resumes from the exact commit referenced in `resume.md`.
+
+
+## 2026-08-12 — Task D Premium Dashboard (frontend-design)
+- Generated cleaned_data/BIA_CMB_clean.csv (40 rows, 36 cols) + PowerQuery_M.txt + dax_spec/DAX_measures.md + design/POWERBI_THINKING.md
+- Built premium dashboard 07_Task_D_PowerBI_SKIPPED/dashboard/index.html (68106 bytes, Chart.js 4.4.3, Tailwind CDN, 40-row embedded RAW, 12 visuals, 4 slicers, SVG map) — industrial aviation theme (ink #070F1E / amber #FF4D1A), Space Grotesk / Newsreader / Fragment Mono
+- Screenshotted via puppeteer-core + Chrome headless 1440×900 2×: page1 1.13MB, page2 0.79MB, page3 1.06MB to screenshots/
+- Launched Chrome for manual QA; file:// open validated.
+
+## 2026-08-12 20:25 — Task D COMPLETE pbix (fully loaded)
+- BIA_CMB_Dashboard.pbix (60,618 bytes): model (36 cols + 17 measures + CSV source, Import) + 3 pages + 39 visuals — zero visual errors on this Desktop build (2.156, July 2026)
+- Fixes applied: inline measure expression in TMDL (pbi-tools mis-parsed multi-line formatString), filledMap replaces deprecated Bing map, scatter X/Y only (no Group role)
+- Screenshots: screenshots/pbi_page1_executive.png, pbi_page2_delay.png, pbi_page3_traffic.png
+- Verified: Total 40 / Arr 18 / Dep 22 / Delayed 9 / On-Time 6 / Critical 13 / Warning 11 / Pax 8,974 / AvgLF 82.2 / AvgDelay 31.4 / Med 31.5 / TotalDelay 1,256 / Max 59 / DelayRate 22.5%

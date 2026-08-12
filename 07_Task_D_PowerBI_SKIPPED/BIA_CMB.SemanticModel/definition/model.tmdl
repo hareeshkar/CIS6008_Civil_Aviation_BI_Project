@@ -1,0 +1,16 @@
+model BIA_CMB
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
+
+annotation PBI_QueryOrder = ["BIA_CMB"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table BIA_CMB
+

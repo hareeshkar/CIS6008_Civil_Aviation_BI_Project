@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "8ebc409be43013c93bff",
+  "position": {
+    "x": 660,
+    "y": 470,
+    "z": 0,
+    "height": 235,
+    "width": 580
+  },
+  "visual": {
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Runway"
+                }
+              },
+              "queryRef": "BIA_CMB.Runway",
+              "nativeQueryRef": "Runway",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIA_CMB"
+                        }
+                      },
+                      "Property": "Flight_ID"
+                    }
+                  },
+                  "Function": 2
+                }
+              },
+              "queryRef": "Count(BIA_CMB.Flight_ID)",
+              "nativeQueryRef": "Count of Flight_ID"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Runway Utilization'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "clusteredColumnChart"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "rows": 40,
+  "cols": 28,
+  "unique_flights": 40,
+  "empty_cells": 0,
+  "duplicates": 0,
+  "issues": [],
+  "corr_queue_taxi": 0.269,
+  "total_passengers": 8974,
+  "mean_delay": 31.4,
+  "critical_alerts": 13,
+  "destinations": [
+    "Singapore",
+    "Male",
+    "Doha",
+    "Dubai",
+    "Bangkok",
+    "London",
+    "Chennai"
+  ]
+}

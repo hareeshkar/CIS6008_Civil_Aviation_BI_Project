@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "c9debbda89bc5d3b4da7",
+  "position": {
+    "x": 660,
+    "y": 160,
+    "z": 0,
+    "height": 300,
+    "width": 580
+  },
+  "visual": {
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Flight_Type"
+                }
+              },
+              "queryRef": "BIA_CMB.Flight_Type",
+              "nativeQueryRef": "Flight_Type",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIA_CMB"
+                        }
+                      },
+                      "Property": "Flight_ID"
+                    }
+                  },
+                  "Function": 2
+                }
+              },
+              "queryRef": "Count(BIA_CMB.Flight_ID)",
+              "nativeQueryRef": "Count of Flight_ID"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Arrival vs Departure'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "clusteredColumnChart"
+  }
+}

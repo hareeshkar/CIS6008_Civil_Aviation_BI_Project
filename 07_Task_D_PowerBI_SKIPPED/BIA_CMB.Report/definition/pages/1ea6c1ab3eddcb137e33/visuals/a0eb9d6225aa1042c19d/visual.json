@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "a0eb9d6225aa1042c19d",
+  "position": {
+    "x": 460,
+    "y": 435,
+    "z": 0,
+    "height": 275,
+    "width": 380
+  },
+  "visual": {
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Weather_Condition"
+                }
+              },
+              "queryRef": "BIA_CMB.Weather_Condition",
+              "nativeQueryRef": "Weather_Condition",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIA_CMB"
+                        }
+                      },
+                      "Property": "Delay_Minutes"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(BIA_CMB.Delay_Minutes)",
+              "nativeQueryRef": "Avg of Delay_Minutes"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Delay vs Weather'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "clusteredColumnChart"
+  }
+}

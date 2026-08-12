@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "6aa1be116e18afcb8080",
+  "displayName": "International Traffic",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

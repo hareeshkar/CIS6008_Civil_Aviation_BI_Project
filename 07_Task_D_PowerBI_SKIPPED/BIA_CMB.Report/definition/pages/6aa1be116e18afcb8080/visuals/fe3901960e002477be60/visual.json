@@ -1,0 +1,91 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "fe3901960e002477be60",
+  "position": {
+    "x": 460,
+    "y": 395,
+    "z": 0,
+    "height": 315,
+    "width": 380
+  },
+  "visual": {
+    "query": {
+      "queryState": {
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Queue_Position"
+                }
+              },
+              "queryRef": "BIA_CMB.Queue_Position",
+              "nativeQueryRef": "Queue_Position",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Taxi_Time"
+                }
+              },
+              "queryRef": "BIA_CMB.Taxi_Time",
+              "nativeQueryRef": "Taxi_Time",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Passenger_Count"
+                }
+              },
+              "queryRef": "BIA_CMB.Passenger_Count",
+              "nativeQueryRef": "Passenger_Count",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Queue Position vs Taxi Time'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "scatterChart"
+  }
+}

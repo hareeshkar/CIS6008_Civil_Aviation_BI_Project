@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "BIA_CMB"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "10ddf0de-a20f-4de2-a179-21841d830772"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "47fbecf4f41152383cf7",
+  "position": {
+    "x": 860,
+    "y": 435,
+    "z": 0,
+    "height": 275,
+    "width": 380
+  },
+  "visual": {
+    "query": {
+      "queryState": {
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Wind_Speed_kmh"
+                }
+              },
+              "queryRef": "BIA_CMB.Wind_Speed_kmh",
+              "nativeQueryRef": "Wind_Speed_kmh",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Delay_Minutes"
+                }
+              },
+              "queryRef": "BIA_CMB.Delay_Minutes",
+              "nativeQueryRef": "Delay_Minutes",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Passenger_Count"
+                }
+              },
+              "queryRef": "BIA_CMB.Passenger_Count",
+              "nativeQueryRef": "Passenger_Count",
+              "active": true
+            }
+          ]
+        },
+        "Details": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIA_CMB"
+                    }
+                  },
+                  "Property": "Alert_Status"
+                }
+              },
+              "queryRef": "BIA_CMB.Alert_Status",
+              "nativeQueryRef": "Alert_Status",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Wind Speed vs Delay'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualType": "scatterChart"
+  }
+}
