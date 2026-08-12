@@ -63,3 +63,10 @@ Rscript 05_Task_B_Network_Analysis/scripts/network_graphs_final.R
 Rscript 05_Task_B_Network_Analysis/scripts/network_visuals.R
 Rscript -e "igraph::read_graph('outputs/graph.gml', format='gml'); igraph::read_graph('outputs/graph.graphml', format='graphml')"
 ```
+
+# 2026-08-12 — Handoff: commit & push for Windows switchover
+git add -A
+git status --short
+git commit -m "Handoff: Task C on hold, Task D next (Windows); add resume.md + SAM3 colab route"
+git push origin main
+git rev-parse HEAD   # referenced in resume.md footer

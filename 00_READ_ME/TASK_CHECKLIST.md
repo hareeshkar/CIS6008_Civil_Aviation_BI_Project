@@ -1,7 +1,7 @@
 # Task Checklist — CIS6008 (Tasks A-C Focus, D Skipped on Mac)
 
 > Update checkboxes as work progresses. Every checked item must have a file or screenshot in the referenced folder.
-> **Task C status (2026-08-09):** 90% via Python+PostGIS fallback (verified 100% numeric, sub-agent `ses_0184dc133` max). QGIS Georeferencer screenshot, native:buffer re-run, real building digitization, .qgz + Print Layout A3 pending QGIS download. See `06_Task_C_QGIS/TASK_C_STATUS.md` and `TASK_C_VALIDATION_REPORT.md`.
+> **Task C status (2026-08-12):** ~95% complete (QGIS native buffers, 16 real buildings 27,912 m², PostGIS `SL_BIA_Aerial_Info` 15 tables — see `06_Task_C_QGIS/TASK_C_STATUS.md` and `TASK_C_VALIDATION_REPORT.md`). **ON HOLD** — only Print Layout A3 PDF + Georeferencer screenshots pending. **Task D is now the active task (Windows).** See `resume.md` at repo root for the handoff state.
 
 ## Task A — Statistical Regression (R) — `04_Task_A_R_Regression/` — 30 marks — ✅ COMPLETE
 

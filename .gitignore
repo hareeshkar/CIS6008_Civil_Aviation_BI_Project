@@ -21,6 +21,13 @@
 /.cursor/
 /.opencode/
 
+# ── Local assignment-writing deliverables and DOCX build dependencies ──
+/reports/
+/scripts/
+/node_modules/
+/package.json
+/package-lock.json
+
 # ── Large GIS raster & mirror (keep organised copy in 03/ but ignore for GitHub) ──
 # The 94 MB aerial TIFF exceeds GitHub 100 MB warning; ignored — see 03_Original_Datasets/README.md
 03_Original_Datasets/Task_C/Raster/*.tif
@@ -60,6 +67,9 @@ renv/cache/
 # ── QGIS / PostGIS ──
 *.qgs~
 *.qgz~
+# SQLite/GeoPackage transient sidecars (never commit)
+*.gpkg-shm
+*.gpkg-wal
 QGIS/*.log
 # PostGIS dumps (if exported)
 *.sql

@@ -88,3 +88,22 @@ Append every major operation here with date + summary + files touched.
 - Max-effort audit `ses_014348e34ffeJJvQqyH7TA9RQ0` verified metrics, environment, exports and visual cleanup. Final audit `ses_014254e30ffeT1Uz5BnqYYvb59` PASS confirmed the 16 retained PNGs, intentional alias removal, locked environment, warning-free graph exports and documentation consistency before commit.
 - Restored write permission (`644`) to `working_data/Air_Transport_Data.csv`; its SHA-256 matches the protected master copy before the re-run.
 - Re-ran Task A from the repository root and regenerated the affected exports; all three independent validation audits completed before commit.
+
+## 2026-08-12 — Task C: SamGeo SAM3 Colab GPU route (Option 2)
+
+- Inspected M4 env: torch 2.13.0 cuda False mps True but SamGeo only cuda/cpu → CPU fallback; SamGeo3 needs transformers/HF not installed locally.
+- Created small-crop test `99_TEMP/samgeo_test/`: 800×800 vit_b CPU 10.7s 62 masks → `SAMGEO_TEST_REPORT.md:1`, proved brightness script inferior but SAM1 not class-specific.
+- Prepared Colab Option 2 per user approval:
+  - Clipped `BIA_CORE_500m_EPSG5234.tif` 3574×3695 13.2 MP (CORE 500m pad) via rasterio window, CRS EPSG:5234 preserved; kept FULL 8205×4000 for final PSR 3km.
+  - Wrote `06_Task_C_QGIS/colab/SAM3_BIA_Colab.ipynb:1` (4 prompts building/tree/vegetation/road, tiled 1024+128, vectorize via raster_to_gpkg, preview PNG).
+  - Wrote `06_Task_C_QGIS/colab/post_process_colab_outputs.py:1` (valid→area filter→rect/solid for buildings→id/name/type/size).
+  - Wrote `06_Task_C_QGIS/colab/COLAB_SAM3_GUIDE.md:1` (upload FULL vs CORE, QC statement, qgis_process buffers).
+- No overwrite of `digitized_layers/buildings_manual.gpkg` or `03_Original_Datasets/` (chmod 444). Outputs isolated to `99_TEMP/samgeo_test/` and `colab/`.
+
+
+## 2026-08-12 — Handoff Prep: resume.md + Commit & Push for Windows Switch
+- Created `resume.md` at repo root — handoff state: Task A ✅, B ✅, C ~95% ON HOLD, Task D NEXT on Windows.
+- Updated `00_READ_ME/TASK_CHECKLIST.md` header + `README.md` to reflect C on hold / D active.
+- Added `.gitignore` rules for SQLite `*.gpkg-shm` / `*.gpkg-wal` sidecar files (transient, previously tracked by accident — removed from index).
+- Committed SAM3 Colab route (Option 2) outputs + SAM3 post-process script + BIA_CORE clip + CLIP_INFO + WRIT1 brief PDF + buildings_manual.gpkg + Proposed_Radar_Locations.kmz + QGIS project updates.
+- Pushed to `origin/main` so the Windows clone resumes from the exact commit referenced in `resume.md`.

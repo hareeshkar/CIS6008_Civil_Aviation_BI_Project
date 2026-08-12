@@ -60,7 +60,8 @@ Rscript -e "renv::restore()"  # inside 04_Task_A_R_Regression or 05_Task_B...
 
 - **Task A:** Only `airport_traffic` strongly predicts demand (r=0.385, R² 0.149, p<1e-7); multiple R² 0.179 adj 0.153, F 7.01 p<1e-6 — low explanatory power honestly reported. All diagnostics pass (VIF ~1.05, BP p0.56, DW 2.07).
 - **Task B:** Cargo Operators (deg 7) and Fuel Supply (between 12) are critical; Louvain finds 4 clusters (mod 0.33); articulation points Cargo/Fuel fragment network.
-- **Task C:** In progress — follows `Task_C_Guide.docx` stepwise (georeference → PostGIS → digitize → buffers → land calc).
+- **Task C:** ~95% complete (QGIS native buffers, 16 real buildings 27,912 m², PostGIS 15 tables) — final Print Layout A3 PDF on hold while Task D is built.
+- **Task D:** Next active task on Windows — see `resume.md` for handoff state and `07_Task_D_PowerBI_SKIPPED/` for spec defaults.
 
 Every claim cites `outputs/`, `metrics/`, or `psql` output — no invented numbers.
 
