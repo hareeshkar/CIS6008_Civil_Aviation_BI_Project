@@ -3,7 +3,7 @@
 > **Read this first.** This repo was developed on **macOS M4** and is being handed to a **Windows laptop** (opencode agent) to continue. It describes exactly what is done, what is on hold, and what to build next.
 > **Export date:** 2026-08-12 · **Repo:** `https://github.com/hareeshkar/CIS6008_Civil_Aviation_BI_Project.git` · **Branch:** `main`
 >
-> **State commit (this resume's content):** `COMMIT_PENDING` — see footer.
+> **State commit (this resume's content):** `c0542288bf1dc5dd2b51579edbc7364e83b6b92d` — see footer.
 
 ---
 
@@ -83,5 +83,5 @@ From `06_Task_C_QGIS/TASK_C_STATUS.md`:
 
 ## 8. Handoff Commit Marker
 
-This resume describes the repository state exactly at commit **`COMMIT_PENDING`** (`main`).
+This resume describes the repository state exactly at commit **`c0542288bf1dc5dd2b51579edbc7364e83b6b92d`** (`main`).
 The Windows agent should `git pull` and confirm `git rev-parse HEAD` matches the footer, then proceed with Task D.
