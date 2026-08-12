@@ -1,0 +1,137 @@
+{
+  "task_id": "task2",
+  "assignment_task": "Task (b)",
+  "task_title": "Network Analysis of Sri Lanka Civil Aviation Stakeholders",
+  "chapter_title": "Task 2: Network Analysis of Sri Lanka Civil Aviation Stakeholders",
+  "chapter_number": 2,
+  "module": "CIS6008 Analytics and Business Intelligence",
+  "assessment": "WRIT1 Task 2: Social Network Analysis",
+  "document_filename": "task2-writ1-aviation-network-analysis.docx",
+  "title_page": {
+    "title": "Network Analysis of Sri Lanka Civil Aviation Stakeholders",
+    "subtitle": "WRIT1 Task 2, Directed Weighted Network Analysis in R",
+    "student": "Hareesh Kar",
+    "module_code": "CIS6008",
+    "module_title": "Analytics and Business Intelligence",
+    "assessment": "WRIT1 Task 2: Social Network Analysis",
+    "university": "Cardiff Metropolitan University, ICBT Campus",
+    "academic_year": "2025-2026"
+  },
+  "include_toc": true,
+  "styling": { "font": "Times New Roman", "size_pt": 12, "line_spacing": 1.5 },
+  "target_grade_band": "excellent",
+  "excellence_target": "Excellent Task (b) work requires a readable and captioned network graph with standard elements, appropriate practical evidence, excellent critical discussion based on social-network findings, and proper Harvard referencing.",
+  "excellence_mapping": [
+    { "subsection": "2.1", "criteria": "Frame the emergency-season scenario and define the directed weighted stakeholder network." },
+    { "subsection": "2.2", "criteria": "Show a readable captioned network and explain its construction and visual encodings." },
+    { "subsection": "2.3", "criteria": "Identify central hubs and critical bridge nodes using exact centrality values." },
+    { "subsection": "2.4", "criteria": "Interpret clusters, connectivity and efficiency with appropriate directed-network caveats." },
+    { "subsection": "2.5", "criteria": "Identify system vulnerabilities under high traffic and technical-fault conditions." },
+    { "subsection": "2.6", "criteria": "Make evidence-led resilience, coordination, risk and crisis-management recommendations." }
+  ],
+  "sections": [
+    {
+      "id": "2.1",
+      "heading": "Scenario, Aim and Network Model",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "This task evaluates stakeholder coordination during the stated peak-tourism scenario at Bandaranaike International Airport, where inbound and outbound traffic rises while an arriving aircraft develops a technical fault. The operational question is not simply which organisation has the largest number of contacts, but which organisations control communication and operational pathways when airport, airline, regulatory, maintenance, customs, security, fuel and cargo functions must respond together." },
+        { "type": "paragraph", "text": "The supplied dataset contains **28** relationship records among **15** distinct organisations, with no missing values. Each record specifies a source, target, relationship type and tie weight. It was modelled in R as a **directed weighted network**, so an edge represents the listed Source to Target relationship rather than an assumed reciprocal connection. Commercial ties account for **10** records, Support for **7**, Operational for **6** and Regulatory for **5**. Weights range from **1 to 9**, with a mean of **4.64**." },
+        { "type": "paragraph", "text": "Degree, strength, directed betweenness, closeness, PageRank, HITS hub and authority scores were calculated on the directed network. For shortest-path metrics, a stronger tie was converted to a lower travel cost using distance = 10 minus Weight. An undirected projection, retaining the mean weight where ties were collapsed, was used only for Louvain community detection because the Louvain method requires an undirected graph [Blondel et al., 2008; Csardi et al., 2026]." },
+        { "type": "code", "language": "R", "caption": "Listing 1. Directed weighted graph construction and centrality calculation.", "text": "g <- graph_from_data_frame(edges_raw, directed = TRUE, vertices = data.frame(name = all_nodes))\nE(g)$distance <- 10 - E(g)$Weight\ndeg_total <- degree(g, mode = \"all\")\nstr_total <- strength(g, mode = \"all\", weights = E(g)$Weight)\nbetw <- betweenness(g, directed = TRUE, weights = E(g)$distance)" }
+      ]
+    },
+    {
+      "id": "2.2",
+      "heading": "Network Structure and Visualisation",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Figure 1 is the principal visualisation. It uses a Fruchterman-Reingold layout to separate connected stakeholder groups, colour to distinguish Louvain communities, node size to show total degree, edge width to show tie strength and arrowheads to preserve direction. This is an abstract stakeholder-relationship network, not a geographic route map; no coordinates are supplied for the organisations, so adding a geographic basemap would falsely imply spatial locations that the data do not contain." },
+        { "type": "figure", "path": "05_Task_B_Network_Analysis/graphs/network_fruchterman.png", "caption": "Figure 1. Directed weighted Sri Lanka civil-aviation stakeholder network. Arrows show Source to Target relationships, edge width shows tie strength, node size shows total degree and colour shows Louvain community." },
+        { "type": "paragraph", "text": "The network has directed density **0.1333**, meaning that only 13.33% of possible directed stakeholder ties are present. It forms one weak component, so all organisations are connected if direction is ignored. However, it has **15** strong components and reciprocity of **0.0000**. The supplied relationships are therefore strictly one-way and hierarchical, with no directed feedback cycle. This describes the scenario dataset, not a claim that real aviation coordination has no feedback loops." },
+        { "type": "paragraph", "text": "The unweighted directed diameter is **4** and the weighted-distance diameter is **22.00**. The reported mean path length is **1.6545** among reachable directed pairs only. It should not be presented as a complete efficiency score because many ordered node pairs are unreachable in a graph with no reciprocal ties. The structural evidence instead indicates that coordination can exist across the weakly connected network, while directional escalation and return communication remain fragile." }
+      ]
+    },
+    {
+      "id": "2.3",
+      "heading": "Central Hubs and Critical Bridge Nodes",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Degree identifies direct connections, whereas strength incorporates relationship weight. Cargo Operators is the largest connection hub with total degree **7** and strength **35**. Customs and Immigration has degree **6** and strength **32**. Fuel Supply Companies has degree **5** but also strength **32**, exceeding BIA CMB's strength of **26** despite the same degree. BIA CMB is a source node with five outbound and zero inbound ties, while Cargo Operators is a sink with seven inbound and zero outbound ties." },
+        { "type": "table", "headers": ["Organisation", "Total degree", "Strength", "Operational interpretation"], "rows": [
+          ["Cargo Operators", "7", "35", "Largest inbound payload and commercial hub"],
+          ["Customs and Immigration", "6", "32", "Gateway between regulatory, passenger and commercial processes"],
+          ["Fuel Supply Companies", "5", "32", "High-weight operational dependency"],
+          ["BIA CMB", "5", "26", "Principal origin and airport-operation source"],
+          ["Sri Lanka Air Force", "5", "18", "Security and emergency support connector"]
+        ]},
+        { "type": "paragraph", "text": "Betweenness measures how often a node lies on weighted shortest paths [Freeman, 1979; Brandes, 2001]. Fuel Supply Companies is the leading bridge with raw betweenness **12**, followed by Customs and Immigration with **11**. Air Traffic Control and International Airlines each score **6**. Fuel therefore matters not merely because it has five direct ties, but because it links otherwise separated operational pathways. Customs is both a high-degree hub and a bridge, making it an especially important clearance and coordination dependency." },
+        { "type": "figure", "path": "05_Task_B_Network_Analysis/graphs/network_betweenness.png", "caption": "Figure 2. Directed weighted network with node size and colour representing betweenness centrality. Fuel Supply Companies and Customs and Immigration are the principal bridge nodes." },
+        { "type": "figure", "path": "05_Task_B_Network_Analysis/graphs/centrality_dashboard.png", "caption": "Figure 3. Centrality dashboard comparing degree, betweenness, closeness, PageRank and strength across stakeholder organisations." },
+        { "type": "paragraph", "text": "ATC is operationally central in the scenario narrative, but the measured network ranks it third for bridge importance rather than first, with betweenness **6**. This distinction is useful: operational authority and structural centrality need not coincide in a small scenario network. PageRank identifies Cargo Operators as the largest terminal recipient, **0.2783**, and Maintenance and Engineering as second, **0.1225**. The directed eigenvector score is not substantively interpreted because Cargo alone receives 1.00 while the remaining nodes are zero, an artefact of the acyclic source-to-sink structure." }
+      ]
+    },
+    {
+      "id": "2.4",
+      "heading": "Clusters, Connectivity and Coordination Efficiency",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "The weighted undirected projection was partitioned with Louvain community detection. It produced **4** communities with modularity **0.3313** and sizes **3, 5, 5 and 2**. The modularity result indicates meaningful functional grouping rather than a completely homogeneous stakeholder structure. A Walktrap comparison produced three broader groups with lower modularity, **0.2414**, while Fast-Greedy also produced four groups with modularity **0.3313**. Louvain is used for the main interpretation because it is reproducible with the fixed seed and provides the highest recorded modularity [Blondel et al., 2008; Csardi et al., 2026]." },
+        { "type": "table", "headers": ["Louvain community", "Members", "Functional interpretation"], "rows": [
+          ["1", "ATC, CAASL, Mihin Lanka", "Regulatory and air-traffic coordination"],
+          ["2", "AASL, Cargo, MRIA, SriLankan Airlines, Tourism", "Commercial, tourism and cargo corridor"],
+          ["3", "BIA CMB, Customs, Fuel, Ground Handling, International Airlines", "BIA gateway, clearance and fuel cluster"],
+          ["4", "Maintenance and Engineering, Sri Lanka Air Force", "Technical and security support pair"]
+        ]},
+        { "type": "figure", "path": "05_Task_B_Network_Analysis/graphs/network_louvain.png", "caption": "Figure 4. Louvain community structure in the Sri Lanka civil-aviation stakeholder network." },
+        { "type": "paragraph", "text": "The community structure has practical implications during a technical fault. Maintenance and Engineering and the Sri Lanka Air Force form a small specialised group, whereas the BIA gateway cluster combines airport, passenger-clearance, fuel and international-airline functions. The MRIA, cargo and tourism community is structurally distinct. A fault response must therefore communicate across communities, especially between the technical pair, ATC/CAASL, and the BIA gateway cluster. The one-way data structure prevents a claim of high directional efficiency, even though weak connectivity shows that an undirected coordination route exists." }
+      ]
+    },
+    {
+      "id": "2.5",
+      "heading": "Vulnerability During High Traffic and Emergency Conditions",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Vulnerability was assessed through articulation points, critical edges and node-removal scenarios. Cargo Operators and Fuel Supply Companies are the two articulation points: removing either fragments the weakly connected network. Cargo removal is the clearest measured failure case. It removes **7** of **28** edges, leaves **21** edges, reduces density from **0.133** to **0.115**, and splits the network into **2** weak components. This creates a plausible cargo, commercial and service-continuity risk during peak operations." },
+        { "type": "table", "headers": ["Scenario", "Edges remaining", "Weak components", "Density", "Interpretation"], "rows": [
+          ["Baseline", "28", "1", "0.133", "Single weakly connected stakeholder network"],
+          ["Remove BIA CMB", "23", "1", "0.126", "Major origin relationships lost, but no weak fragmentation"],
+          ["Remove CAASL", "24", "1", "0.132", "Regulatory source relationships lost, but no weak fragmentation"],
+          ["Remove Cargo Operators", "21", "2", "0.115", "Largest measured fragmentation and edge loss"],
+          ["Remove Customs and Immigration", "22", "1", "0.121", "Gateway capacity reduced without weak fragmentation"],
+          ["Remove BIA CMB and CAASL", "19", "1", "0.122", "Joint operational and regulatory source disruption"]
+        ]},
+        { "type": "figure", "path": "05_Task_B_Network_Analysis/graphs/vulnerability_storyboard.png", "caption": "Figure 5. Network vulnerability scenarios following the removal of selected stakeholder nodes." },
+        { "type": "paragraph", "text": "The highest edge-betweenness ties are Customs and Immigration to International Airlines, **13**, and Fuel Supply Companies to Customs and Immigration, **12**. These links should be considered communication and service-continuity choke points. The brief specifically highlights ATC and Ground Handling failure. ATC has a non-zero bridge score of **6**, supporting continuity planning and an alternative coordination channel. Ground Handling has degree **1** and betweenness **0** in this supplied dataset; its low score should be reported as a modelling limitation, not interpreted as proof that real ground handling is unimportant during a technical-fault response." }
+      ]
+    },
+    {
+      "id": "2.6",
+      "heading": "Recommendations for Resilience, Coordination and Crisis Management",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "The recommendations follow the measured structural risks rather than assigning generic aviation actions to every stakeholder. The proposed actions are feasible as coordination and continuity measures because they target the small set of hubs, bridges and inter-community dependencies identified in the network." },
+        { "type": "bullets", "items": [
+          "**Protect Cargo continuity:** Cargo has degree **7**, strength **35** and is an articulation point. A secondary cargo-processing arrangement, including an MRIA contingency pathway, would reduce the most severe measured fragmentation risk.",
+          "**Diversify fuel coordination:** Fuel has the highest betweenness, **12**, and is an articulation point. Documented backup fuel contacts and direct contingency communications between Ground Handling, ATC and airport operations would reduce dependence on a single bridge.",
+          "**Parallelise Customs processes:** Customs has degree **6**, strength **32**, betweenness **11**, and the highest edge-betweenness connection to International Airlines. Pre-clearance, e-gate escalation and a dedicated disruption channel would reduce this gateway bottleneck.",
+          "**Formalise ATC fallback:** ATC has bridge score **6** in addition to its scenario role as safety coordinator. A crisis communication protocol should specify a backup ATC channel, maintenance escalation route and CAASL notification sequence.",
+          "**Use MRIA as a planned reserve:** MRIA has four outbound ties but no inbound ties in the supplied network. Reciprocal contingency links with airlines and cargo operators would make it a genuine fallback rather than a one-way source in the network model.",
+          "**Improve the next dataset:** capture reciprocal communications, time-stamped operational interactions, ground-handling dependencies and actual disruption outcomes. This would allow the model to assess real service flows rather than analyst-assigned scenario ties."
+        ]},
+        { "type": "paragraph", "text": "The analysis is a valid decision-support exercise, not a live airport control model. The network contains only **15** organisations and **28** directed scenario ties, and its weights are supplied relationship strengths rather than measured traffic, message or resource flows. Its main value is to make hidden concentration risks visible, to prioritise continuity planning and to identify which data should be collected for a more operationally realistic resilience model." }
+      ]
+    },
+    {
+      "id": "2.7",
+      "heading": "Conclusion",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Task 2 constructed and visualised a directed weighted network of Sri Lanka civil-aviation stakeholders. Cargo Operators was the primary degree and strength hub, Fuel Supply Companies and Customs and Immigration were the principal bridge nodes, and the Louvain result revealed four functional communities. The network is weakly connected but directionally hierarchical, with no reciprocal ties and no strong component larger than one node. Cargo and Fuel are articulation points, making them the highest measured continuity risks. The findings support focused cargo redundancy, fuel-route diversification, Customs parallelisation, ATC fallback procedures and better collection of reciprocal operational data." }
+      ]
+    }
+  ],
+  "references": [],
+  "word_count_estimate": 1830,
+  "word_count_band": { "floor": 1500, "target_low": 1700, "target_high": 1900, "ceiling": 2000, "report_ceiling": 3000 }
+}

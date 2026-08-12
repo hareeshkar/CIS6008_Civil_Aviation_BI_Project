@@ -22,7 +22,7 @@
 /.opencode/
 
 # ── Local assignment-writing deliverables and DOCX build dependencies ──
-/reports/
+# /reports/ now tracked (user wants reports pushed to cloud)
 /scripts/
 /node_modules/
 /package.json

@@ -1,0 +1,182 @@
+{
+  "task_id": "task1",
+  "assignment_task": "Task (a)",
+  "task_title": "Statistical Analysis of Passenger Demand in Sri Lanka Civil Aviation",
+  "chapter_title": "Task 1: Statistical Analysis of Passenger Demand in Sri Lanka Civil Aviation",
+  "chapter_number": 1,
+  "module": "CIS6008 Analytics and Business Intelligence",
+  "assessment": "WRIT1 Task 1: Passenger Demand Statistical Analysis",
+  "document_filename": "task1-writ1-passenger-demand-analysis.docx",
+  "title_page": {
+    "title": "Statistical Analysis of Passenger Demand in Sri Lanka Civil Aviation",
+    "subtitle": "WRIT1 Task 1, Regression Analysis in R",
+    "student": "Hareesh Kar",
+    "module_code": "CIS6008",
+    "module_title": "Analytics and Business Intelligence",
+    "assessment": "WRIT1 Task 1: Passenger Demand Statistical Analysis",
+    "university": "Cardiff Metropolitan University, ICBT Campus",
+    "academic_year": "2025-2026"
+  },
+  "include_toc": true,
+  "styling": { "font": "Times New Roman", "size_pt": 12, "line_spacing": 1.5 },
+  "target_grade_band": "excellent",
+  "excellence_target": "Excellent Task A evidence requires a reproducible R workflow, descriptive statistics, hypothesis-based normality and correlation testing, scatterplots, simple and multiple regression, model diagnostics, critical interpretation and traceable evidence.",
+  "excellence_mapping": [
+    { "subsection": "1.1", "criteria": "Define the dataset, dependent variable, predictors and reproducible R analytical sequence." },
+    { "subsection": "1.2", "criteria": "Present descriptive and Shapiro-Wilk normality evidence with hypotheses and interpretation." },
+    { "subsection": "1.3", "criteria": "Analyse Pearson correlations and scatterplots with hypotheses and practical interpretation." },
+    { "subsection": "1.4", "criteria": "Compare all six simple regression models precisely." },
+    { "subsection": "1.5", "criteria": "State and critically interpret the multiple regression model and coefficients." },
+    { "subsection": "1.6", "criteria": "Evaluate collinearity, residual normality, homoscedasticity, autocorrelation and influence." },
+    { "subsection": "1.7", "criteria": "Provide critical civil-aviation implications without causal overclaiming." }
+  ],
+  "sections": [
+    {
+      "id": "1.1",
+      "heading": "Aim, Dataset and Analytical Approach",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Passenger demand is relevant to aviation capacity planning, flight scheduling, route development and infrastructure investment. This task examines the statistical relationships between passenger demand and airport traffic, average income, fuel price, average ticket fare, flight frequency and route distance. Passenger demand is the dependent variable; the remaining six measures are explanatory variables. The analysis was implemented in R and is reproducible in RStudio using the supplied script." },
+        { "type": "paragraph", "text": "The dataset contains **200** observations and seven numeric variables. No variable has missing observations, so deletion or imputation was not required. The analytical sequence was data-quality checking, descriptive statistics, Shapiro-Wilk normality testing, Pearson correlation testing, scatterplot inspection, six simple linear regressions, a six-predictor multiple regression and regression diagnostics." },
+        { "type": "table", "headers": ["Variable", "Role", "Analytical purpose"], "rows": [
+          ["passenger_demand", "Dependent variable", "Outcome to be explained"],
+          ["airport_traffic", "Independent variable", "Airport activity indicator"],
+          ["avg_income", "Independent variable", "Economic capacity indicator"],
+          ["fuel_price", "Independent variable", "Operating-cost indicator"],
+          ["avg_ticket_fare", "Independent variable", "Price indicator"],
+          ["flight_frequency", "Independent variable", "Service-frequency indicator"],
+          ["route_distance", "Independent variable", "Route-characteristic indicator"]
+        ]},
+        { "type": "code", "language": "R", "caption": "Listing 1. Selected R workflow for the multiple regression model.", "text": "f_multi <- as.formula(paste(var_dv, \"~\", paste(vars_iv, collapse = \" + \")))\nm_multi <- lm(f_multi, data = df)\ns_multi <- summary(m_multi)\nvif_vals <- car::vif(m_multi)" }
+      ]
+    },
+    {
+      "id": "1.2",
+      "heading": "Descriptive Statistics and Distribution Assessment",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Descriptive statistics establish the scale and spread of the variables before regression coefficients are interpreted. Passenger demand has a mean of **107,811.47**, median of **109,586.05** and standard deviation of **53,856.39**. Airport traffic has a mean of **197,961.45** and standard deviation of **46,550.20**. The negative minimum passenger-demand value is not physically meaningful for aviation and is retained as a synthetic-data limitation rather than being silently removed." },
+        { "type": "table", "headers": ["Variable", "Mean", "Median", "SD", "Minimum", "Maximum"], "rows": [
+          ["Passenger demand", "107,811.47", "109,586.05", "53,856.39", "-60,240.14", "268,128.43"],
+          ["Airport traffic", "197,961.45", "199,790.41", "46,550.20", "69,012.74", "336,008.46"],
+          ["Average income", "66,030.42", "65,946.07", "11,844.05", "26,104.79", "111,232.78"],
+          ["Fuel price", "0.887", "0.888", "0.149", "0.529", "1.362"],
+          ["Average ticket fare", "250.36", "250.89", "40.78", "142.12", "355.30"],
+          ["Flight frequency", "122.57", "122.61", "19.12", "71.52", "170.54"],
+          ["Route distance", "1,553.45", "1,579.10", "412.13", "341.50", "2,475.90"]
+        ]},
+        { "type": "figure", "path": "04_Task_A_R_Regression/plots/hist_density_passenger_demand.png", "caption": "Figure 1. Passenger-demand distribution with density overlay." },
+        { "type": "figure", "path": "04_Task_A_R_Regression/plots/qq_passenger_demand.png", "caption": "Figure 2. Q-Q plot for passenger demand." },
+        { "type": "paragraph", "text": "Normality was assessed using the Shapiro-Wilk test. For every variable, the null hypothesis was that the variable was normally distributed; the alternative was that it was not normally distributed. At the 5% significance level, no test rejected the null hypothesis. Histograms and Q-Q plots were considered alongside the tests because visual evidence helps identify skewness, tails and isolated observations." },
+        { "type": "table", "headers": ["Variable", "Shapiro-Wilk W", "p-value", "Decision at 5%"], "rows": [
+          ["Airport traffic", "0.9956", "0.829", "Fail to reject normality"],
+          ["Average income", "0.9910", "0.250", "Fail to reject normality"],
+          ["Fuel price", "0.9964", "0.922", "Fail to reject normality"],
+          ["Average ticket fare", "0.9952", "0.777", "Fail to reject normality"],
+          ["Flight frequency", "0.9940", "0.600", "Fail to reject normality"],
+          ["Route distance", "0.9928", "0.440", "Fail to reject normality"],
+          ["Passenger demand", "0.9927", "0.425", "Fail to reject normality"]
+        ]}
+      ]
+    },
+    {
+      "id": "1.3",
+      "heading": "Correlation Analysis and Scatterplot Evidence",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Pearson correlation tested the direction and strength of linear association between passenger demand and each explanatory variable. For each test, the null hypothesis was no linear population correlation, rho = 0; the alternative was a non-zero linear correlation. Airport traffic was the only statistically significant correlation with passenger demand, **r = 0.385, p < 0.001**. This is a moderate positive association, not evidence that airport traffic alone determines demand." },
+        { "type": "table", "headers": ["Predictor", "Pearson r", "p-value", "Interpretation"], "rows": [
+          ["Airport traffic", "0.385", "<0.001", "Moderate positive, significant"],
+          ["Fuel price", "0.086", "0.228", "Negligible, not significant"],
+          ["Flight frequency", "0.052", "0.463", "Negligible, not significant"],
+          ["Average income", "0.050", "0.486", "Negligible, not significant"],
+          ["Route distance", "-0.041", "0.563", "Negligible, not significant"],
+          ["Average ticket fare", "-0.030", "0.669", "Negligible, not significant"]
+        ]},
+        { "type": "figure", "path": "04_Task_A_R_Regression/plots/correlation_plot.png", "caption": "Figure 3. Correlation matrix for passenger demand and explanatory variables." },
+        { "type": "figure", "path": "04_Task_A_R_Regression/plots/passenger_demand_vs_airport_traffic.png", "caption": "Figure 4. Airport traffic and passenger demand, with fitted simple-regression line." },
+        { "type": "paragraph", "text": "The airport-traffic scatterplot shows the expected upward tendency, although substantial vertical spread remains at comparable traffic levels. The other five scatterplots are diffuse without a clear linear pattern, consistent with their negligible correlations. Correlations among explanatory variables were also low, with the largest absolute correlation **0.171** between average ticket fare and flight frequency. This is an early indication that severe multicollinearity is unlikely." }
+      ]
+    },
+    {
+      "id": "1.4",
+      "heading": "Simple Linear Regression Analysis",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Six simple regressions estimated the separate association of each predictor with passenger demand. The general model was passenger demand = beta_0 + beta_1 X + error. Airport traffic was the only statistically significant simple model and had the largest explanatory power." },
+        { "type": "table", "headers": ["Predictor", "Slope", "SE", "t", "p-value", "R2"], "rows": [
+          ["Airport traffic", "0.446", "0.076", "5.877", "<0.001", "0.1485"],
+          ["Average income", "0.225", "0.323", "0.698", "0.486", "0.0025"],
+          ["Fuel price", "30,945.53", "25,574.60", "1.210", "0.228", "0.0073"],
+          ["Average ticket fare", "-40.14", "93.80", "-0.428", "0.669", "0.0009"],
+          ["Flight frequency", "147.06", "199.92", "0.736", "0.463", "0.0027"],
+          ["Route distance", "-5.38", "9.28", "-0.580", "0.563", "0.0017"]
+        ]},
+        { "type": "paragraph", "text": "The fitted airport-traffic equation was passenger demand = **19,542.28 + 0.4459 airport traffic**. An increase of 1,000 airport-traffic units was associated with approximately **446** additional passenger-demand units. Its 95% confidence interval is approximately **296 to 596** additional passenger-demand units per 1,000 traffic units. Nevertheless, the model explains only **14.85%** of demand variation, so it is useful as a demand signal but insufficient as a stand-alone forecasting model. Every other simple model explained less than 1% of variation and had a non-significant slope." }
+      ]
+    },
+    {
+      "id": "1.5",
+      "heading": "Multiple Linear Regression Model",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "The multiple model estimated the joint association of all six predictors with passenger demand. The overall model was significant, **F(6,193) = 7.008, p < 0.001**, with **R2 = 0.1789** and adjusted **R2 = 0.1534**. The six variables therefore explain 17.9% of observed demand variation before adjustment and 15.3% after adjustment. Most variation remains outside the model." },
+        { "type": "table", "headers": ["Term", "Estimate", "SE", "t", "p-value", "95% CI"], "rows": [
+          ["Intercept", "-37,745.06", "47,291.43", "-0.798", "0.426", "-131,019.44 to 55,529.32"],
+          ["Airport traffic", "0.4759", "0.0772", "6.167", "<0.001", "0.3237 to 0.6281"],
+          ["Average income", "0.0805", "0.3021", "0.267", "0.790", "-0.5153 to 0.6763"],
+          ["Fuel price", "53,537.84", "23,998.90", "2.231", "0.027", "6,204.04 to 100,871.63"],
+          ["Average ticket fare", "-111.77", "88.55", "-1.262", "0.208", "-286.41 to 62.87"],
+          ["Flight frequency", "221.22", "189.13", "1.170", "0.244", "-151.81 to 594.24"],
+          ["Route distance", "-0.3826", "8.6321", "-0.044", "0.965", "-17.41 to 16.64"]
+        ]},
+        { "type": "paragraph", "text": "The fitted equation was passenger demand = **-37,745.06 + 0.4759 airport traffic + 0.0805 average income + 53,537.84 fuel price - 111.77 average ticket fare + 221.22 flight frequency - 0.3826 route distance**. Holding the other predictors constant, airport traffic remained highly significant. Fuel price was statistically significant only in the multiple model. Its positive coefficient is counter-intuitive and was not significant in the simple model, so it should be treated as a dataset-specific conditional association. This pattern may reflect omitted variables or a suppression-type relationship, but neither explanation has been formally tested and neither supports a causal policy result." },
+        { "type": "table", "headers": ["Model", "R2", "Adjusted R2", "AIC"], "rows": [
+          ["Airport traffic only", "0.1485", "0.1442", "4898.04"],
+          ["Six-predictor model", "0.1789", "0.1534", "4900.78"]
+        ]},
+        { "type": "paragraph", "text": "The multiple model improves adjusted R2 by only about **0.9 percentage points** compared with the airport-traffic simple model. Its AIC is also slightly higher. These results favour a parsimonious interpretation: airport traffic is the robust empirical signal, while the additional variables do not yet justify a strong forecasting claim." }
+      ]
+    },
+    {
+      "id": "1.6",
+      "heading": "Model Diagnostics and Reliability",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Diagnostic tests and plots were examined before relying on the regression estimates. The variance inflation factors range from **1.03 to 1.06**, well below the conventional threshold of 5, so material multicollinearity is not indicated. Residual normality was not rejected, Shapiro-Wilk **W = 0.9943, p = 0.650**. The Breusch-Pagan test, **BP = 4.841, p = 0.564**, provides no evidence of heteroscedasticity. As an additional diagnostic, the Durbin-Watson result, **DW = 2.071, p = 0.697**, provides no evidence of positive autocorrelation; this is secondary because the supplied data are not presented as a time-ordered series." },
+        { "type": "table", "headers": ["Predictor", "VIF", "Conclusion"], "rows": [
+          ["Airport traffic", "1.05", "No material collinearity"],
+          ["Average income", "1.04", "No material collinearity"],
+          ["Fuel price", "1.04", "No material collinearity"],
+          ["Average ticket fare", "1.06", "No material collinearity"],
+          ["Flight frequency", "1.06", "No material collinearity"],
+          ["Route distance", "1.03", "No material collinearity"]
+        ]},
+        { "type": "figure", "path": "04_Task_A_R_Regression/plots/diagnostics_residuals_vs_fitted.png", "caption": "Figure 5. Residuals versus fitted values for the multiple regression model." },
+        { "type": "figure", "path": "04_Task_A_R_Regression/plots/qq_residuals.png", "caption": "Figure 6. Normal Q-Q plot of standardised multiple-regression residuals." },
+        { "type": "paragraph", "text": "The diagnostic evidence does not show a severe assumption failure. The maximum Cook's distance was **0.062**, below common concern thresholds, although individual observations should remain visible during future model development. The principal limitation is practical rather than diagnostic: the residual standard error is **49,555**, approximately 46% of mean passenger demand, and the adjusted R2 is low. A statistically valid model can still be too weak for precise forecasting." }
+      ]
+    },
+    {
+      "id": "1.7",
+      "heading": "Critical Discussion and Civil Aviation Implications",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Airport traffic is the only robust short-run predictor in this dataset. In the multiple model, an increase of 1,000 airport-traffic units is associated with approximately **476** additional passenger-demand units, with a 95% confidence interval of approximately **324 to 628**. This supports using airport throughput as one input to capacity, staffing, gate-allocation and scheduling discussions. It does not justify treating airport traffic as a complete demand forecast." },
+        { "type": "paragraph", "text": "Average income, ticket fare, flight frequency and route distance were not statistically significant after adjustment. This does not demonstrate that these factors are irrelevant to real aviation markets. Rather, it shows that this 200-observation dataset does not capture a sufficiently strong independent relationship after the other measured variables are considered. Tourism seasonality, exchange rates, airline capacity, route competition, events, visa policy and economic shocks are plausible omitted drivers." },
+        { "type": "paragraph", "text": "The positive fuel-price coefficient must not be converted into a recommendation to accept higher fuel prices. Its direction conflicts with usual economic expectations and its simple-regression relationship was non-significant. The safest interpretation is that it reflects an association conditional on this dataset. Future work should add time-series structure, tourism and macroeconomic variables, train-test validation, forecast error measures and prediction intervals. The present model is therefore a **decision-support model**, not a definitive passenger-demand forecasting system." }
+      ]
+    },
+    {
+      "id": "1.8",
+      "heading": "Conclusion",
+      "depth": 1,
+      "blocks": [
+        { "type": "paragraph", "text": "Task 1 applied descriptive statistics, hypothesis-based normality and correlation tests, scatterplots, six simple regressions, a six-predictor multiple regression and diagnostic checks to passenger demand. Airport traffic had a significant positive association with demand and the full model was statistically significant. However, adjusted R2 of **0.1534** means that most passenger-demand variation remains unexplained. The analysis supplies a transparent baseline for civil-aviation planning, but it should be extended with richer longitudinal data before it is used for high-stakes forecasting or policy decisions." }
+      ]
+    }
+  ],
+  "references": [],
+  "word_count_estimate": 1550,
+  "word_count_band": { "floor": 1300, "target_low": 1450, "target_high": 1600, "ceiling": 1700, "report_ceiling": 1700 }
+}
